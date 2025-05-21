@@ -65,15 +65,21 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">          <div className="flex items-center">
-            <a 
+        <div className="flex items-center justify-between">          <div className="flex items-center">            <a 
               href="#hero" 
               onClick={(e) => handleNavClick(e, '#hero')}
               className="flex items-center"
-            >
-              <span className="text-2xl font-bold text-blue-600 dark:text-blue-400 mr-2">R</span>
+            >              <div className="w-8 h-8 mr-2 relative overflow-hidden rounded-full">
+                <Image
+                  src="/images/logo.png"
+                  alt="Research Project Logo"
+                  fill
+                  className="object-cover rounded-full"
+                  priority
+                />
+              </div>
               <span className={`font-semibold text-lg ${isScrolled ? 'text-gray-800 dark:text-gray-200' : 'text-gray-800 dark:text-white'}`}>
-                Research Project
+                Mirror
               </span>
             </a>
           </div>{/* Desktop Navigation */}
