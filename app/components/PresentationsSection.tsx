@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import fileSvg from '../../public/file.svg';
 
 interface Presentation {
   id: string;
@@ -8,7 +9,6 @@ interface Presentation {
   fileUrl: string;
   fileSize: string;
   dateAdded: string;
-  thumbnailUrl: string;
 }
 
 export default function PresentationsSection() {
@@ -20,8 +20,7 @@ export default function PresentationsSection() {
       description: "A comprehensive overview of our research project and goals",
       fileUrl: "/presentations/presentation1.pdf",
       fileSize: "5.2 MB",
-      dateAdded: "2025-01-20",
-      thumbnailUrl: "/images/presentation-thumbnail-1.jpg" // This would be replaced with actual thumbnails
+      dateAdded: "2025-01-20"
     },
     {
       id: "pres2",
@@ -29,8 +28,7 @@ export default function PresentationsSection() {
       description: "Presentation of interim research findings and progress update",
       fileUrl: "/presentations/presentation2.pdf",
       fileSize: "4.7 MB",
-      dateAdded: "2025-03-05",
-      thumbnailUrl: "/images/presentation-thumbnail-2.jpg"
+      dateAdded: "2025-03-05"
     },
     {
       id: "pres3",
@@ -38,8 +36,7 @@ export default function PresentationsSection() {
       description: "Detailed explanation of research methodologies employed",
       fileUrl: "/presentations/presentation3.pdf",
       fileSize: "3.9 MB",
-      dateAdded: "2025-04-12",
-      thumbnailUrl: "/images/presentation-thumbnail-3.jpg"
+      dateAdded: "2025-04-12"
     },
   ];
 
@@ -54,11 +51,14 @@ export default function PresentationsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {presentations.map((presentation) => (
             <div key={presentation.id} className="bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
-              <div className="relative h-48 bg-gray-200 dark:bg-gray-600">
-                {/* Placeholder for presentation thumbnail */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-4xl font-bold text-gray-400 dark:text-gray-500">PDF</span>
-                </div>
+              <div className="relative h-48 bg-gray-200 dark:bg-gray-600 flex items-center justify-center">
+                <Image
+                  src={fileSvg}
+                  alt={`${presentation.title} thumbnail`}
+                  width={80}
+                  height={80}
+                  className="opacity-50"
+                />
               </div>
               
               <div className="p-6">

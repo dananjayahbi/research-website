@@ -1,7 +1,5 @@
 'use client';
 
-'use client';
-
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -34,6 +32,29 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
+  // Smooth scroll implementation
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+      
+      // Update URL without page reload
+      window.history.pushState(null, '', href);
+      
+      // Close mobile menu if open
+      if (isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    }
+  };
 
   return (
     <header
@@ -44,29 +65,31 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <Link href="#hero" className="flex items-center">
+        <div className="flex items-center justify-between">          <div className="flex items-center">
+            <a 
+              href="#hero" 
+              onClick={(e) => handleNavClick(e, '#hero')}
+              className="flex items-center"
+            >
               <span className="text-2xl font-bold text-blue-600 dark:text-blue-400 mr-2">R</span>
               <span className={`font-semibold text-lg ${isScrolled ? 'text-gray-800 dark:text-gray-200' : 'text-gray-800 dark:text-white'}`}>
                 Research Project
               </span>
-            </Link>
-          </div>
-
-          {/* Desktop Navigation */}
+            </a>
+          </div>{/* Desktop Navigation */}
           <nav className="hidden md:flex items-center">
             <ul className="flex space-x-8">
               {navLinks.map((link, index) => (
                 <li key={index}>
-                  <Link
+                  <a
                     href={link.href}
-                    className={`text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className={`text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer ${
                       isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-gray-800 dark:text-white'
                     }`}
                   >
                     {link.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -88,22 +111,20 @@ export default function Header() {
             </svg>
           </button>
         </div>
-      </div>
-
-      {/* Mobile Menu */}
+      </div>      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white dark:bg-gray-900 shadow-lg">
           <nav className="px-4 pt-2 pb-4">
             <ul className="space-y-2">
               {navLinks.map((link, index) => (
                 <li key={index}>
-                  <Link
+                  <a
                     href={link.href}
                     className="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                   >
                     {link.name}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
