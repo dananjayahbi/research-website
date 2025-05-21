@@ -9,22 +9,21 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('hero');
-
   const navLinks = [
-    { name: 'Home', href: '#hero', icon: '🏠' },
-    { name: 'About', href: '#about', icon: 'ℹ️' },
-    { name: 'Technologies', href: '#technologies', icon: '🔧' },
-    { name: 'Documents', href: '#documents', icon: '📄' },
-    { name: 'Presentations', href: '#presentations', icon: '📊' },
-    { name: 'Milestones', href: '#milestones', icon: '🏆' },
-    { name: 'Gallery', href: '#gallery', icon: '🖼️' },
-    { name: 'Team', href: '#team', icon: '👥' },
-    { name: 'Contact', href: '#contact', icon: '📞' },
+    { name: 'Home', href: '#hero' },
+    { name: 'About', href: '#about' },
+    { name: 'Technologies', href: '#technologies' },
+    { name: 'Documents', href: '#documents' },
+    { name: 'Presentations', href: '#presentations' },
+    { name: 'Milestones', href: '#milestones' },
+    { name: 'Gallery', href: '#gallery' },
+    { name: 'Domain', href: '#domain' },
+    { name: 'Team', href: '#team' },
+    { name: 'Contact', href: '#contact' },
   ];
-
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 30) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -32,7 +31,7 @@ export default function Header() {
       
       // Update active link based on scroll position
       const sections = navLinks.map(link => link.href.replace('#', ''));
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 80; // Reduced offset for smaller header
       
       for(let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i]);
@@ -70,21 +69,19 @@ export default function Header() {
       }
     }
   };
-
   // Animation variants
   const headerVariants = {
-    hidden: { y: -100, opacity: 0 },
+    hidden: { y: -50, opacity: 0 },
     visible: { 
       y: 0, 
       opacity: 1,
       transition: {
         type: "spring",
-        stiffness: 100,
-        damping: 20
+        stiffness: 120,
+        damping: 25
       }
     }
   };
-
   const navItemVariants = {
     hidden: { opacity: 0, y: -10 },
     visible: (i: number) => ({ 
@@ -95,94 +92,87 @@ export default function Header() {
         duration: 0.3,
         ease: "easeOut"
       }
-    }),
-    hover: { 
-      scale: 1.1, 
-      color: "var(--primary)",
+    }),    hover: { 
+      scale: 1.02, 
+      color: "#60a5fa", /* blue-400 */
       transition: { 
         duration: 0.2 
       } 
     }
   };
-
   const logoVariants = {
-    hidden: { scale: 0.8, opacity: 0 },
+    hidden: { scale: 0.9, opacity: 0 },
     visible: { 
       scale: 1, 
       opacity: 1,
       transition: {
-        delay: 0.1,
+        delay: 0.05,
         type: "spring",
         stiffness: 200,
-        damping: 15
+        damping: 18
       }
     }
   };
-
   const mobileMenuVariants = {
     hidden: { opacity: 0, height: 0, overflow: "hidden" },
     visible: { 
       opacity: 1, 
       height: "auto",
       transition: {
-        duration: 0.4,
+        duration: 0.3,
         ease: "easeInOut",
-        staggerChildren: 0.1
+        staggerChildren: 0.05
       }
     },
     exit: { 
       opacity: 0, 
       height: 0,
       transition: {
-        duration: 0.3,
+        duration: 0.2,
         ease: "easeInOut"
       }
     }
   };
-
   const mobileNavItemVariants = {
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, x: -10 },
     visible: (i: number) => ({ 
       opacity: 1, 
       x: 0,
       transition: { 
-        delay: 0.05 * i,
-        duration: 0.3,
+        delay: 0.03 * i,
+        duration: 0.2,
         ease: "easeOut" 
       }
     }),
     exit: { 
       opacity: 0, 
-      x: -20,
+      x: -10,
       transition: { 
-        duration: 0.2 
+        duration: 0.15 
       }
     }
   };
-
   const menuButtonVariants = {
     hover: { 
-      scale: 1.1,
-      transition: { duration: 0.2 } 
+      scale: 1.05,
+      transition: { duration: 0.15 } 
     },
     tap: { 
-      scale: 0.9 
+      scale: 0.95 
     }
   };
-
-  return (
-    <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+  return (    <motion.header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900 text-white bg-opacity-95 backdrop-blur-sm shadow-sm ${
         isScrolled
-          ? 'bg-white bg-opacity-95 backdrop-blur-sm shadow-lg py-3'
-          : 'bg-transparent py-5'
+          ? 'py-1.5'
+          : 'py-2'
       }`}
       variants={headerVariants}
       initial="hidden"
       animate="visible"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-10">
           <motion.div 
             className="flex items-center"
             variants={logoVariants}
@@ -191,52 +181,45 @@ export default function Header() {
               href="#hero" 
               onClick={(e) => handleNavClick(e, '#hero')}
               className="flex items-center"
-            >
-              <motion.span 
-                className="text-2xl font-bold gradient-text mr-2"
-                whileHover={{ scale: 1.1, rotate: 5 }}
+            >              <motion.span 
+                className="text-lg font-bold gradient-text mr-1.5"
+                whileHover={{ scale: 1.05, rotate: 3 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 R
               </motion.span>
               <motion.span 
-                className="font-semibold text-lg text-gray-800"
-                whileHover={{ scale: 1.05 }}
+                className="font-medium text-sm text-white"
+                whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 Research Project
               </motion.span>
             </a>
-          </motion.div>
-
-          {/* Desktop Navigation */}
+          </motion.div>          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center">
-            <ul className="flex space-x-6">
+            <ul className="flex space-x-3">
               {navLinks.map((link, index) => (
                 <motion.li 
                   key={index}
                   custom={index}
                   variants={navItemVariants}
                   whileHover="hover"
-                >
-                  <a
+                >                  <a
                     href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className={`relative px-2 py-1 text-sm font-medium transition-colors cursor-pointer group ${
+                    onClick={(e) => handleNavClick(e, link.href)}                    className={`relative px-2 py-1 text-sm font-medium transition-colors cursor-pointer group ${
                       activeLink === link.href.replace('#', '') 
-                        ? 'text-primary font-semibold' 
-                        : 'text-gray-700 hover:text-primary'
+                        ? 'text-blue-300 font-semibold'
+                        : 'text-gray-200 hover:text-blue-300'
                     }`}
                   >
-                    <span className="hidden sm:inline-block mr-1">{link.icon}</span>
-                    {link.name}
-                    {activeLink === link.href.replace('#', '') && (
+                    {link.name}                    {activeLink === link.href.replace('#', '') && (
                       <motion.span 
-                        className="absolute bottom-0 left-0 h-0.5 w-full bg-primary"
+                        className="absolute bottom-0 left-0 h-0.5 w-full bg-blue-300"
                         layoutId="activeLink"
-                        initial={{ opacity: 0 }}
+                        initial={{ opacity: 0.7 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.2 }}
                       />
                     )}
                   </a>
@@ -245,8 +228,7 @@ export default function Header() {
             </ul>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <motion.button
+          {/* Mobile Menu Button */}          <motion.button
             type="button"
             className="md:hidden flex items-center"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -254,46 +236,42 @@ export default function Header() {
             variants={menuButtonVariants}
             whileHover="hover"
             whileTap="tap"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          >            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
               {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </motion.button>
         </div>
       </div>
 
-      {/* Mobile Menu with AnimatePresence for smooth enter/exit animations */}
-      <AnimatePresence>
+      {/* Mobile Menu with AnimatePresence for smooth enter/exit animations */}      <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div 
-            className="md:hidden bg-white bg-opacity-95 backdrop-blur-sm shadow-lg"
+            className="md:hidden bg-gray-900 bg-opacity-98 backdrop-blur-sm shadow-xs"
             variants={mobileMenuVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
           >
-            <nav className="px-4 pt-2 pb-4">
-              <ul className="space-y-1">
+            <nav className="px-3 pt-1 pb-2">
+              <ul className="space-y-0.5">
                 {navLinks.map((link, index) => (
                   <motion.li 
                     key={index}
                     variants={mobileNavItemVariants}
                     custom={index}
-                  >
-                    <a
+                  >                    <a
                       href={link.href}
-                      className={`flex items-center py-2 px-3 rounded-md ${
+                      className={`block py-2 px-3 rounded-sm text-sm ${
                         activeLink === link.href.replace('#', '') 
-                          ? 'bg-primary-light/10 text-primary font-medium' 
-                          : 'text-gray-700 hover:bg-gray-100'
+                          ? 'bg-blue-500/15 text-blue-300 font-medium' 
+                          : 'text-gray-300 hover:bg-gray-800'
                       }`}
                       onClick={(e) => handleNavClick(e, link.href)}
                     >
-                      <span className="mr-3 text-lg">{link.icon}</span>
                       {link.name}
                     </a>
                   </motion.li>

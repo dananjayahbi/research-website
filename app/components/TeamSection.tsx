@@ -30,8 +30,7 @@ interface TeamMember {
 
 export default function TeamSection() {
   const [hoveredMember, setHoveredMember] = useState<number | null>(null);
-  
-  const teamMembers: TeamMember[] = [
+    const teamMembers: TeamMember[] = [
     {
       id: 1,
       name: "Dr. Sarah Johnson",
@@ -77,6 +76,30 @@ export default function TeamSection() {
         website: "https://example.com"
       }
     },
+    {
+      id: 5,
+      name: "Dr. James Wilson",
+      role: "Machine Learning Engineer",
+      bio: "Specialized in deep learning algorithms with a focus on natural language processing applications.",
+      image: memberImage2, // Reusing image, should be replaced with actual image
+      socialLinks: {
+        twitter: "https://twitter.com",
+        github: "https://github.com",
+        linkedin: "https://linkedin.com"
+      }
+    },
+    {
+      id: 6,
+      name: "Dr. Aisha Patel",
+      role: "Research Coordinator",
+      bio: "PhD in Computational Biology with experience managing cross-disciplinary research teams.",
+      image: memberImage3, // Reusing image, should be replaced with actual image
+      socialLinks: {
+        linkedin: "https://linkedin.com",
+        website: "https://example.com",
+        github: "https://github.com"
+      }
+    },
   ];
   
   return (
@@ -97,7 +120,7 @@ export default function TeamSection() {
           </p>
         </motion.div>
         
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" staggerDelay={0.15}>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.15}>
           {teamMembers.map((member) => (
             <AnimationItem key={member.id} className="h-full">
               <Card3D 
