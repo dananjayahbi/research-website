@@ -10,11 +10,13 @@ import ContactSection from "./components/ContactSection";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import ScrollProgressBar from "./components/ScrollProgressBar";
 
 export default function Home() {
   return (
     <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
       <Header />
+      <ScrollProgressBar height={4} color="#3B82F6" />
       <main>
         <HeroSection />
         <AboutSection />
