@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import hero from '../../public/images/hero-placeholder.jpg';
 
 export default function HeroSection() {
   return (
@@ -25,9 +26,8 @@ export default function HeroSection() {
         </a>
       </div>
       <div className="w-full max-w-4xl mt-16">
-        <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-xl">
-          <Image
-            src="/images/hero-placeholder.jpg"
+        <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-xl">          <Image
+            src={hero}
             alt="Research visualization"
             fill
             style={{ objectFit: 'cover' }}

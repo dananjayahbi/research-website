@@ -1,11 +1,17 @@
 import Image from 'next/image';
 
+// Import team member images
+import memberImage1 from '../../public/images/team/team-member-1.jpg';
+import memberImage2 from '../../public/images/team/team-member-2.jpg';
+import memberImage3 from '../../public/images/team/team-member-3.jpg';
+import memberImage4 from '../../public/images/team/team-member-4.jpg';
+
 interface TeamMember {
   id: number;
   name: string;
   role: string;
   bio: string;
-  imageUrl: string;
+  image: any;
   socialLinks?: {
     twitter?: string;
     linkedin?: string;
@@ -21,7 +27,7 @@ export default function TeamSection() {
       name: "Dr. Sarah Johnson",
       role: "Principal Investigator",
       bio: "PhD in Computer Science with 15 years of experience in data science and AI research.",
-      imageUrl: "/images/team/team-member-1.jpg",
+      image: memberImage1,
       socialLinks: {
         twitter: "https://twitter.com",
         linkedin: "https://linkedin.com",
@@ -33,7 +39,7 @@ export default function TeamSection() {
       name: "Dr. Michael Chen",
       role: "Research Scientist",
       bio: "Expert in statistical modeling with publications in leading journals and conferences.",
-      imageUrl: "/images/team/team-member-2.jpg",
+      image: memberImage2,
       socialLinks: {
         linkedin: "https://linkedin.com",
         github: "https://github.com"
@@ -44,7 +50,7 @@ export default function TeamSection() {
       name: "Dr. Emily Rodriguez",
       role: "Data Analyst",
       bio: "Specialist in data visualization and interpretation with a background in cognitive science.",
-      imageUrl: "/images/team/team-member-3.jpg",
+      image: memberImage3,
       socialLinks: {
         twitter: "https://twitter.com",
         linkedin: "https://linkedin.com"
@@ -55,7 +61,7 @@ export default function TeamSection() {
       name: "Prof. Robert Taylor",
       role: "Academic Advisor",
       bio: "Distinguished professor with expertise in research methodology and academic publishing.",
-      imageUrl: "/images/team/team-member-4.jpg",
+      image: memberImage4,
       socialLinks: {
         linkedin: "https://linkedin.com",
         website: "https://example.com"
@@ -72,15 +78,16 @@ export default function TeamSection() {
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {teamMembers.map((member) => (
-            <div key={member.id} className="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+          {teamMembers.map((member) => (            <div key={member.id} className="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <div className="relative h-64 bg-gray-200 dark:bg-gray-700">
-                {/* This would be an actual image in production */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-600 dark:text-blue-300 text-xl font-bold">
-                    {member.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                </div>
+                <Image
+                  src={member.image}
+                  alt={`Photo of ${member.name}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  className="object-cover"
+                  priority={member.id === 1}
+                />
               </div>
                 <div className="p-6">
                 <h3 className="text-xl font-semibold mb-1">{member.name}</h3>

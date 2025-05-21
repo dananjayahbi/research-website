@@ -3,35 +3,42 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+// Import slideshow images
+import slide1 from '../../public/images/slideshow/slide1.jpg';
+import slide2 from '../../public/images/slideshow/slide2.jpg';
+import slide3 from '../../public/images/slideshow/slide3.jpg';
+import slide4 from '../../public/images/slideshow/slide4.jpg';
+import slide5 from '../../public/images/slideshow/slide5.jpg';
+
 export default function SlideShowSection() {
   const slides = [
     {
       id: 1,
-      imageUrl: "/images/slideshow/slide1.jpg",
+      image: slide1,
       title: "Research in Progress",
       description: "Our team collecting data in the field"
     },
     {
       id: 2,
-      imageUrl: "/images/slideshow/slide2.jpg",
+      image: slide2,
       title: "Lab Analysis",
       description: "Processing samples in our state-of-the-art laboratory"
     },
     {
       id: 3,
-      imageUrl: "/images/slideshow/slide3.jpg",
+      image: slide3,
       title: "Team Meeting",
       description: "Collaborative discussions to interpret research findings"
     },
     {
       id: 4,
-      imageUrl: "/images/slideshow/slide4.jpg",
+      image: slide4,
       title: "Conference Presentation",
       description: "Sharing our research with the scientific community"
     },
     {
       id: 5,
-      imageUrl: "/images/slideshow/slide5.jpg",
+      image: slide5,
       title: "Technology Integration",
       description: "Using advanced technology to enhance our research capabilities"
     }
@@ -68,11 +75,18 @@ export default function SlideShowSection() {
           Visual documentation of our research journey and milestones.
         </p>
         
-        <div className="relative max-w-5xl mx-auto h-[400px] md:h-[500px]">
-          {/* Placeholder for slideshow images */}
+        <div className="relative max-w-5xl mx-auto h-[400px] md:h-[500px]">          {/* Display slideshow images with overlay text */}
           <div className="relative h-full w-full rounded-xl overflow-hidden shadow-xl">
+            <Image
+              src={slides[currentSlide].image}
+              alt={slides[currentSlide].title}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+              className="object-cover"
+            />
             <div 
-              className="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700"
+              className="absolute inset-0 flex items-center justify-center"
               style={{ 
                 backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6))` 
               }}
