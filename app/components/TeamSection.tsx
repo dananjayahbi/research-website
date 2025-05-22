@@ -34,10 +34,12 @@ export default function TeamSection() {
   const [hoveredMember, setHoveredMember] = useState<number | null>(null);    const teamMembers: TeamMember[] = [
     {
       id: 1,
+
       name: "Dr. Harinda Fernando",
       role: "Supervisor",
       bio: "Department of Computer Systems Engineering",
       image: supervisorImg,
+
       socialLinks: {
         twitter: "https://twitter.com",
         linkedin: "https://linkedin.com",
@@ -46,6 +48,7 @@ export default function TeamSection() {
     },
     {
       id: 2,
+
       name: "Ms. Manori Gamage",
       role: "Co-Supervisor",
       bio: "Department of Data Science Faculty of Computing",
@@ -57,6 +60,7 @@ export default function TeamSection() {
     },
     {
       id: 3,
+
       name: "Silva W.I.S.",
       role: "Researcher",
       bio: "Department of Information Technology Faculty of Computing",
@@ -68,6 +72,7 @@ export default function TeamSection() {
     },
     {
       id: 4,
+
       name: "Liyanage K.L.R.N.",
       role: "Researcher",
       bio: "Department of Information Technology Faculty of Computing",
@@ -79,6 +84,7 @@ export default function TeamSection() {
     },
     {
       id: 5,
+
       name: "Dananjaya H.B.I.", 
       role: "Researcher",
       bio: "Department of Information Technology Faculty of Computing",
@@ -91,6 +97,7 @@ export default function TeamSection() {
     },
     {
       id: 6,
+
       name: "Perera L.S.",
       role: "Researcher",
       bio: "Department of Information Technology Faculty of Computing",
@@ -114,10 +121,10 @@ export default function TeamSection() {
           className="mb-12"
         >          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             <AnimatedLetters text="Research " staggerDuration={0.05} />
-            <span className="gradient-text">Team</span>
+            <span className="gradient-text">Paper Authors</span>
           </h2>
           <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-            Meet the researchers and Supervisors behind the MIRROR project publication.
+            Meet the researchers and scientists behind the MIRROR project publication.
           </p>
         </motion.div>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12" staggerDelay={0.15}>
