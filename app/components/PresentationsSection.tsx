@@ -80,7 +80,7 @@ export default function PresentationsSection() {
       id: "pres1",
       title: "Proposal Presentation",
       description: "Initial project proposal presentation outlining the research goals and methodology",
-      fileUrl: "/presentations/presentation1.pdf",
+      fileUrl: "https://drive.google.com/drive/folders/1MUG08WMIAiKJjPMWiSZaiOGDScNRx2sP?usp=sharing",
       fileSize: "4.8 MB",
       dateAdded: "2024-07-15"
     },
