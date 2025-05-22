@@ -107,26 +107,32 @@ export default function Footer() {
           <motion.div 
             custom={0} 
             variants={columnVariants}
-          >
-            <motion.div 
-              className="flex items-center mb-6"
-              variants={logoVariants}
-            >              <motion.div 
-                className="relative w-10 h-10 mr-3 rounded-lg overflow-hidden bg-white/5"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
+          >            <motion.div 
+                className="flex items-center mb-6"
+                variants={logoVariants}
+              >              <motion.div 
+                  className="relative w-10 h-10 mr-3 rounded-lg overflow-hidden bg-white/5"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <Image
+                    src="/images/butterfly-logo.png"
+                    alt="Butterfly Logo"
+                    width={40}
+                    height={40}
+                    className="object-contain"
+                  />
+                </motion.div>
+                <motion.span 
+                  className="text-xl font-semibold"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  MIRROR APP
+
+
+                </motion.span>
               </motion.div>
-              <motion.span 
-                className="text-xl font-semibold"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                MIRROR APP
-
-
-              </motion.span>
-            </motion.div>
             <motion.p 
               className="text-gray-300 mb-6"
               initial={{ opacity: 0, y: 20 }}
@@ -371,7 +377,7 @@ export default function Footer() {
               className="text-gray-400 text-sm"
               whileHover={{ color: "#CBD5E0" }}
             >
-              © {currentYear} Research Project. All rights reserved.
+              © {currentYear} MIRROR. All rights reserved.
             </motion.p>
             <div className="mt-4 md:mt-0">
               <ul className="flex space-x-6 text-sm">
