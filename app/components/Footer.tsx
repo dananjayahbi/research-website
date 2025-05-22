@@ -111,11 +111,18 @@ export default function Footer() {
             <motion.div 
               className="flex items-center mb-6"
               variants={logoVariants}
-            >              <motion.div 
+            >              
+              <motion.div 
                 className="relative w-10 h-10 mr-3 rounded-lg overflow-hidden bg-white/5"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
+                <Image
+                  src="/images/logo.png"
+                  alt="Research Logo"
+                  fill
+                  className="object-contain p-1"
+                />
               </motion.div>
               <motion.span 
                 className="text-xl font-semibold"
@@ -123,8 +130,6 @@ export default function Footer() {
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 MIRROR APP
-
-
               </motion.span>
             </motion.div>
             <motion.p 

@@ -88,7 +88,7 @@ export default function PresentationsSection() {
       id: "pres2",
       title: "Progress Presentation-1",
       description: "First progress update showcasing initial findings and implementation progress",
-      fileUrl: "/presentations/presentation2.pdf",
+      fileUrl: "https://drive.google.com/drive/folders/1Ut_VolK6xRS_pnYx4wN2Ht3GP3IfCNcr?usp=sharing",
       fileSize: "5.2 MB",
       dateAdded: "2024-12-10"
     },
@@ -104,7 +104,7 @@ export default function PresentationsSection() {
       id: "pres4",
       title: "Final Presentation",
       description: "Comprehensive presentation of the complete research project and findings",
-      fileUrl: "/presentations/presentation3.pdf",
+      fileUrl: "https://drive.google.com/drive/folders/1awT134Q7fmjHd-v8zA1gBK5Le3Aii6v8?usp=sharing",
       fileSize: "7.3 MB",
       dateAdded: "2025-04-15"
     }

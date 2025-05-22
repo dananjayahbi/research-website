@@ -9,10 +9,12 @@ import AnimationItem from './AnimationItem';
 import Card3D from './Card3D';
 
 // Import team member images
-import memberImage1 from '../../public/images/team/team-member-1.jpg';
-import memberImage2 from '../../public/images/team/team-member-2.jpg';
-import memberImage3 from '../../public/images/team/team-member-3.jpg';
-import memberImage4 from '../../public/images/team/team-member-4.jpg';
+import supervisorImg from '../../public/images/team/Superviser.png';
+import coSupervisorImg from '../../public/images/team/Co-Supervisor.jpg';
+import isurangaImg from '../../public/images/team/isuranga.png';
+import isuruImg from '../../public/images/team/isuru.png';
+import lakshithaImg from '../../public/images/team/lakshitha.png';
+import ravinduImg from '../../public/images/team/ravindu.png';
 
 interface TeamMember {
   id: number;
@@ -32,10 +34,10 @@ export default function TeamSection() {
   const [hoveredMember, setHoveredMember] = useState<number | null>(null);    const teamMembers: TeamMember[] = [
     {
       id: 1,
-      name: "Dr. Harinda  Fernando ",
+      name: "Dr. Harinda Fernando",
       role: "Supervisor",
       bio: "Department of Computer Systems Engineering",
-      image: memberImage1,
+      image: supervisorImg,
       socialLinks: {
         twitter: "https://twitter.com",
         linkedin: "https://linkedin.com",
@@ -46,8 +48,8 @@ export default function TeamSection() {
       id: 2,
       name: "Ms. Manori Gamage",
       role: "Co-Supervisor",
-      bio: "Department of Data Science Faculty of Computing.",
-      image: memberImage2,
+      bio: "Department of Data Science Faculty of Computing",
+      image: coSupervisorImg,
       socialLinks: {
         linkedin: "https://linkedin.com",
         github: "https://github.com"
@@ -58,7 +60,7 @@ export default function TeamSection() {
       name: "Silva W.I.S.",
       role: "Researcher",
       bio: "Department of Information Technology Faculty of Computing",
-      image: memberImage3,
+      image: isurangaImg,
       socialLinks: {
         twitter: "https://twitter.com",
         linkedin: "https://linkedin.com"
@@ -66,10 +68,10 @@ export default function TeamSection() {
     },
     {
       id: 4,
-      name: "Liyanage K.L.R. N.",
+      name: "Liyanage K.L.R.N.",
       role: "Researcher",
       bio: "Department of Information Technology Faculty of Computing",
-      image: memberImage4,
+      image: ravinduImg,
       socialLinks: {
         linkedin: "https://linkedin.com",
         github: "https://github.com"
@@ -80,7 +82,7 @@ export default function TeamSection() {
       name: "Dananjaya H.B.I.", 
       role: "Researcher",
       bio: "Department of Information Technology Faculty of Computing",
-      image: memberImage2, // Reusing image, should be replaced with actual image
+      image: isuruImg,
       socialLinks: {
         twitter: "https://twitter.com",
         github: "https://github.com",
@@ -89,10 +91,10 @@ export default function TeamSection() {
     },
     {
       id: 6,
-      name: "Perera L. S.",
+      name: "Perera L.S.",
       role: "Researcher",
       bio: "Department of Information Technology Faculty of Computing",
-      image: memberImage3, // Reusing image, should be replaced with actual image
+      image: lakshithaImg,
       socialLinks: {
         linkedin: "https://linkedin.com",
         website: "https://example.com",
@@ -118,17 +120,15 @@ export default function TeamSection() {
             Meet the researchers and Supervisors behind the MIRROR project publication.
           </p>
         </motion.div>
-        
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={0.15}>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12" staggerDelay={0.15}>
           {teamMembers.map((member) => (
             <AnimationItem key={member.id} className="h-full">
               <Card3D 
-                className="h-full bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100"
-                intensity={10}
-                glareOpacity={0.15}
-              >
-                <div 
-                  className="relative h-64 overflow-hidden"
+                className="h-full bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300"
+                intensity={8}
+                glareOpacity={0.12}
+              >                <div 
+                  className="relative h-72 overflow-hidden bg-gray-100"
                   onMouseEnter={() => setHoveredMember(member.id)}
                   onMouseLeave={() => setHoveredMember(null)}
                 >
@@ -139,14 +139,14 @@ export default function TeamSection() {
                       filter: hoveredMember === member.id ? "brightness(1.1)" : "brightness(1)"
                     }}
                     transition={{ duration: 0.4 }}
-                    className="w-full h-full"
+                    className="w-full h-full flex items-center justify-center"
                   >
                     <Image
                       src={member.image}
                       alt={`Photo of ${member.name}`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      className="object-cover"
+                      className="object-contain p-2"
                       priority={member.id === 1}
                     />
                   </motion.div>

@@ -10,7 +10,6 @@ export default function DomainSection() {
     triggerOnce: true
   });
 
-  // Animation variants
   const sectionVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -38,44 +37,44 @@ export default function DomainSection() {
 
   const domainAreas = [
     {
-      title: "Machine Learning",
-      description: "Developing advanced algorithms and models for pattern recognition, prediction, and data analysis.",
-      icon: "🧠"
+      title: "Literature Survey",
+      description: "Comprehensive analysis of existing depression detection systems, focusing on facial expression analysis, voice pattern recognition, and natural language processing techniques in mental health assessment.",
+      icon: "📚"
     },
     {
-      title: "Data Science",
-      description: "Extracting insights and knowledge from structured and unstructured data using scientific methods.",
-      icon: "📊"
+      title: "Research Problem",
+      description: "Addressing the challenge of early depression detection through the development of a multi-modal AI system that combines facial, voice, and textual analysis for more accurate mental health assessment.",
+      icon: "🔍"
     },
     {
-      title: "Artificial Intelligence",
-      description: "Creating intelligent systems capable of performing tasks that typically require human intelligence.",
-      icon: "🤖"
+      title: "Research Gap",
+      description: "Current systems lack integration of multiple modalities and real-time analysis capabilities. Our research aims to bridge this gap by developing a comprehensive, AI-driven solution.",
+      icon: "🎯"
     },
     {
-      title: "Computer Vision",
-      description: "Enabling computers to derive meaningful information from digital images, videos and other visual inputs.",
-      icon: "👁️"
+      title: "Methodology",
+      description: "Implementation of deep learning models for facial expression analysis, voice pattern recognition, and NLP, combined with an interactive chatbot interface for real-time mental health monitoring.",
+      icon: "⚙️"
     },
     {
-      title: "Natural Language Processing",
-      description: "Processing and analyzing large amounts of natural language data to improve human-computer interaction.",
-      icon: "💬"
+      title: "Expected Outcomes",
+      description: "Development of an accurate, user-friendly system for early depression detection, featuring real-time analysis and personalized support through an AI companion.",
+      icon: "🎯"
     },
     {
-      title: "Robotics",
-      description: "Designing and developing autonomous systems capable of interacting with the physical world.",
-      icon: "🦾"
+      title: "Future Directions",
+      description: "Expansion of the system to include additional biomarkers, integration with healthcare systems, and development of preventive intervention strategies based on collected data.",
+      icon: "🚀"
     }
   ];
 
   return (
-    <section id="domain" className="py-20 bg-gray-50 relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-0 right-0 -translate-y-1/2 w-64 h-64 rounded-full bg-primary/5 blur-2xl"></div>
-      <div className="absolute bottom-0 left-0 translate-y-1/4 w-80 h-80 rounded-full bg-accent/5 blur-3xl"></div>
-
-      <div className="container mx-auto px-4 max-w-6xl">
+    <section id="domain" className="py-20 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+      {/* Glassmorphism background effects */}
+      <div className="absolute top-0 right-0 -translate-y-1/2 w-96 h-96 rounded-full bg-blue-200/30 blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 translate-y-1/4 w-96 h-96 rounded-full bg-purple-200/30 blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 max-w-7xl relative z-10">
         <motion.div
           ref={ref}
           variants={sectionVariants}
@@ -85,35 +84,44 @@ export default function DomainSection() {
         >
           <motion.h2 
             variants={itemVariants} 
-            className="text-3xl md:text-4xl font-bold mb-4 gradient-text"
+            className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-blue-600"
           >
-            Research Domains
+            Research Overview
           </motion.h2>
           <motion.p 
             variants={itemVariants}
-            className="text-gray-600 max-w-3xl mx-auto"
+            className="text-gray-600 max-w-3xl mx-auto text-lg"
           >
-            Our research spans across multiple domains in cutting-edge technology and scientific fields, focusing on innovation and practical applications.
+            Depression Detection through Facial, Voice, and Text Analysis with AI-Driven Conversational Companion - A Multi-Modal Approach for Mental Health Assessment
           </motion.p>
         </motion.div>
 
         <motion.div 
           variants={sectionVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
         >
           {domainAreas.map((domain, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-white rounded-lg shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow duration-300 group"
+              className="backdrop-blur-sm bg-white/80 rounded-xl border border-gray-100/50 p-8 hover:shadow-xl transition-all duration-300 group hover:scale-[1.02]"
+              style={{
+                backgroundImage: 'linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.6))'
+              }}
             >
-              <div className="flex items-start mb-4">
-                <div className="w-12 h-12 bg-primary-light/10 flex items-center justify-center rounded-lg text-2xl mr-4 group-hover:scale-110 transition-transform duration-300">
+              <div className="flex items-start space-x-5">
+                <div className="w-14 h-14 bg-gradient-to-br from-primary/10 to-purple-500/10 flex items-center justify-center rounded-lg text-3xl group-hover:scale-110 transition-transform duration-300 shadow-sm">
                   {domain.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 group-hover:text-primary transition-colors duration-300">{domain.title}</h3>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold mb-3 text-gray-800 group-hover:text-primary transition-colors duration-300">
+                    {domain.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {domain.description}
+                  </p>
+                </div>
               </div>
-              <p className="text-gray-600 ml-16">{domain.description}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -124,7 +132,7 @@ export default function DomainSection() {
         >
           <a 
             href="#contact" 
-            className="inline-block bg-primary text-white font-medium py-3 px-6 rounded-full shadow-md hover:bg-primary-dark transition-colors duration-300"
+            className="inline-block bg-gradient-to-r from-primary to-purple-600 text-white font-medium py-4 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
             Collaborate with Us
           </a>
