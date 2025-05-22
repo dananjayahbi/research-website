@@ -173,34 +173,19 @@ export default function Header() {
               href="#hero" 
               onClick={(e) => handleNavClick(e, '#hero')}
               className="flex items-center pl-3"
-            >              <div className="flex items-center">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="relative w-12 h-12 mr-3 rounded-full overflow-hidden border-2 border-blue-400/30"
-                >
-                  <Image
-                    src="/images/logo.png"
-                    alt="MIRROR Logo"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="relative w-8 h-8 mr-2"
-                >
-                  <Image
-                    src="/images/butterfly-logo.png"
-                    alt="Butterfly Logo"
-                    width={32}
-                    height={32}
-                    className="object-contain"
-                  />
-                </motion.div>
-              </div>
+            >              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="relative w-12 h-12 mr-3 rounded-full overflow-hidden border-2 border-blue-400/30"
+              >
+                <Image
+                  src="/images/logo.png"
+                  alt="MIRROR Logo"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </motion.div>
               <motion.span 
                 className="font-medium text-lg text-white"
                 whileHover={{ scale: 1.02 }}
@@ -208,7 +193,7 @@ export default function Header() {
               >
                 MIRROR
               </motion.span>
-            </a></motion.div>          {/* Desktop Navigation */}          <nav className="hidden md:flex items-center justify-center flex-1">
+            </a>          </motion.div>          {/* Desktop Navigation */}          <nav className="hidden md:flex items-center justify-center flex-1">
             <ul className="flex space-x-6 md:space-x-8">
               {navLinks.map((link, index) => (
                 <motion.li 

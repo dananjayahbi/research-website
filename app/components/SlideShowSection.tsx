@@ -7,48 +7,33 @@ import { useInView } from '../hooks/useInView';
 import AnimatedLetters from './AnimatedLetters';
 
 // Import slideshow images
-import slide1 from '../../public/images/slideshow/slide1.jpg';
-import slide2 from '../../public/images/slideshow/slide2.jpg';
-import slide3 from '../../public/images/slideshow/slide3.jpg';
-import slide4 from '../../public/images/slideshow/slide4.jpg';
-import slide5 from '../../public/images/slideshow/slide5.jpg';
+import slide1 from '../../public/images/slideshow/ss1.jpg';
+import slide2 from '../../public/images/slideshow/ss2.jpg';
+import slide3 from '../../public/images/slideshow/ss3.jpg';
 
 export default function SlideShowSection() {
   const { ref, isInView } = useInView<HTMLDivElement>({
     threshold: 0.1,
     triggerOnce: true
   });
-
   const slides = [
     {
       id: 1,
       image: slide1,
-      title: "Research in Progress",
-      description: "Our team collecting data in the field"
+      title: "System Architecture",
+      description: "Our comprehensive multi-modal depression detection system"
     },
     {
       id: 2,
       image: slide2,
-      title: "Lab Analysis",
-      description: "Processing samples in our state-of-the-art laboratory"
+      title: "AI Analysis",
+      description: "Advanced deep learning models for emotion and speech analysis"
     },
     {
       id: 3,
       image: slide3,
-      title: "Team Meeting",
-      description: "Collaborative discussions to interpret research findings"
-    },
-    {
-      id: 4,
-      image: slide4,
-      title: "Conference Presentation",
-      description: "Sharing our research with the scientific community"
-    },
-    {
-      id: 5,
-      image: slide5,
-      title: "Technology Integration",
-      description: "Using advanced technology to enhance our research capabilities"
+      title: "Interactive Support",
+      description: "AI-driven conversational companion for mental health support"
     }
   ];
   
