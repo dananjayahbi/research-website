@@ -235,7 +235,7 @@ export default function ContactSection() {
                 </motion.div>
                 <div className="ml-4">
                   <h4 className="text-lg font-medium mb-1 text-foreground">Email</h4>
-                  <p className="text-gray-600">research@mirror-project.org</p>
+                  <p className="text-gray-600">isurangasulakshana@gmail.com</p>
                 </div>
               </motion.div>
               
@@ -257,7 +257,7 @@ export default function ContactSection() {
                 </motion.div>
                 <div className="ml-4">
                   <h4 className="text-lg font-medium mb-1 text-foreground">Phone</h4>
-                  <p className="text-gray-600">(123) 456-7890</p>
+                  <p className="text-gray-600">(+94) 557-5691</p>
                 </div>
               </motion.div>
               
@@ -280,7 +280,7 @@ export default function ContactSection() {
                 </motion.div>
                 <div className="ml-4">
                   <h4 className="text-lg font-medium mb-1 text-foreground">Location</h4>
-                  <p className="text-gray-600">123 Research Way, Science City, 12345</p>
+                  <p className="text-gray-600">SLIIT Malabe Campus, New Kandy Road, Malabe.</p>
                 </div>
               </motion.div>
             </div>
@@ -365,7 +365,7 @@ export default function ContactSection() {
                         value={formData.name}
                         onChange={handleChange}
                         className="w-full pl-10 pr-4 py-3 rounded-lg border border-blue-100 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-200"
-                        placeholder="John Doe"
+                        placeholder="Enter Your Name"
                         required
                         whileFocus={{ scale: 1.01, boxShadow: "0px 0px 8px rgba(59, 130, 246, 0.3)" }}
                         transition={{ type: "spring", stiffness: 300 }}
@@ -388,7 +388,7 @@ export default function ContactSection() {
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full pl-10 pr-4 py-3 rounded-lg border border-blue-100 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-200"
-                        placeholder="john.doe@example.com"
+                        placeholder="Enter Your email"
                         required
                         whileFocus={{ scale: 1.01, boxShadow: "0px 0px 8px rgba(59, 130, 246, 0.3)" }}
                         transition={{ type: "spring", stiffness: 300 }}

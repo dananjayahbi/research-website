@@ -32,9 +32,9 @@ export default function TeamSection() {
   const [hoveredMember, setHoveredMember] = useState<number | null>(null);    const teamMembers: TeamMember[] = [
     {
       id: 1,
-      name: "Dr. Samantha Lee",
-      role: "Principal Investigator",
-      bio: "PhD in Computer Science with expertise in AI and machine learning for mental health applications.",
+      name: "Dr. Harinda  Fernando ",
+      role: "Supervisor",
+      bio: "Department of Computer Systems Engineering",
       image: memberImage1,
       socialLinks: {
         twitter: "https://twitter.com",
@@ -44,9 +44,9 @@ export default function TeamSection() {
     },
     {
       id: 2,
-      name: "Michael Chen, MSc",
-      role: "Research Associate",
-      bio: "Expert in deep learning and neural networks with focus on computer vision models like EfficientNet.",
+      name: "Ms. Manori Gamage",
+      role: "Co-Supervisor",
+      bio: "Department of Data Science Faculty of Computing.",
       image: memberImage2,
       socialLinks: {
         linkedin: "https://linkedin.com",
@@ -55,9 +55,9 @@ export default function TeamSection() {
     },
     {
       id: 3,
-      name: "Dr. Sarah Johnson",
-      role: "Psychology Collaborator",
-      bio: "Specialist in clinical psychology with research focus on depression detection and treatment.",
+      name: "Silva W.I.S.",
+      role: "Researcher",
+      bio: "Department of Information Technology Faculty of Computing",
       image: memberImage3,
       socialLinks: {
         twitter: "https://twitter.com",
@@ -66,9 +66,9 @@ export default function TeamSection() {
     },
     {
       id: 4,
-      name: "Aiden Patel",
-      role: "Graduate Student",
-      bio: "Machine learning researcher focusing on CNN-LSTM models for temporal data analysis.",
+      name: "Liyanage K.L.R. N.",
+      role: "Researcher",
+      bio: "Department of Information Technology Faculty of Computing",
       image: memberImage4,
       socialLinks: {
         linkedin: "https://linkedin.com",
@@ -77,8 +77,9 @@ export default function TeamSection() {
     },
     {
       id: 5,
-      name: "Emily Rodriguez",      role: "Graduate Student",
-      bio: "NLP and speech processing specialist working on voice analysis using Librosa and deep learning.",
+      name: "Dananjaya H.B.I.", 
+      role: "Researcher",
+      bio: "Department of Information Technology Faculty of Computing",
       image: memberImage2, // Reusing image, should be replaced with actual image
       socialLinks: {
         twitter: "https://twitter.com",
@@ -88,9 +89,9 @@ export default function TeamSection() {
     },
     {
       id: 6,
-      name: "Dr. David Kim",
-      role: "Technical Advisor",
-      bio: "Lead architect for MERN stack implementation and Python backend integration.",
+      name: "Perera L. S.",
+      role: "Researcher",
+      bio: "Department of Information Technology Faculty of Computing",
       image: memberImage3, // Reusing image, should be replaced with actual image
       socialLinks: {
         linkedin: "https://linkedin.com",
@@ -111,10 +112,10 @@ export default function TeamSection() {
           className="mb-12"
         >          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
             <AnimatedLetters text="Research " staggerDuration={0.05} />
-            <span className="gradient-text">Paper Authors</span>
+            <span className="gradient-text">Team</span>
           </h2>
           <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-            Meet the researchers and scientists behind the MIRROR project publication.
+            Meet the researchers and Supervisors behind the MIRROR project publication.
           </p>
         </motion.div>
         

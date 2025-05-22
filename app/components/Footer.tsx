@@ -116,20 +116,15 @@ export default function Footer() {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <Image
-                  src="/images/logo.png"
-                  alt="MIRROR Logo"
-                  fill
-                  className="object-cover"
-                  priority
-                />
               </motion.div>
               <motion.span 
                 className="text-xl font-semibold"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                MIRROR Project
+                MIRROR APP
+
+
               </motion.span>
             </motion.div>
             <motion.p 
@@ -138,7 +133,7 @@ export default function Footer() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              Advancing scientific knowledge through innovative research methodologies and interdisciplinary collaboration.
+              A Multi-Modal AI Framework for Enhanced Depression Detection and Support Using Emotion-Aware Deep Learning and Voice Companions
             </motion.p>
             <div className="flex space-x-4">
               {/* Social media icons */}
@@ -303,7 +298,7 @@ export default function Footer() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </motion.div>
-                <span>123 Research Way, Science City, 12345</span>
+                <span>SLIIT Malabe Campus, New Kandy Road, Malabe.</span>
               </motion.div>              <motion.div 
                 className="flex items-start"
                 initial={{ opacity: 0, y: 10 }}
@@ -320,7 +315,7 @@ export default function Footer() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </motion.div>
-                <span>research@example.com</span>
+                <span>isurangasulakshana@gmail.com</span>
               </motion.div>              <motion.div 
                 className="flex items-start"
                 initial={{ opacity: 0, y: 10 }}
@@ -337,7 +332,7 @@ export default function Footer() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                 </motion.div>
-                <span>(123) 456-7890</span>
+                <span>(+94) 78 - 557 - 5691</span>
               </motion.div>
               
               {/* Newsletter signup */}
