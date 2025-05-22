@@ -27,32 +27,32 @@ export default function MilestonesSection() {
       description: "First progress presentation to stakeholders - Mark Allocation: 15%"
     },
     {
-      date: "April 2025",
+      date: "September 2023",
       title: "Final Reports (Thesis)",
       description: "Submission of final thesis documentation - Mark Allocation: 19% (Group & Individual)"
     },
     {
-      date: "March 2025",
+      date: "September 2023",
       title: "Progress Presentation-2",
       description: "Second progress presentation with detailed findings - Mark Allocation: 18% (Group & Individual)"
     },
     {
-      date: "June 2025",
+      date: "May & September 2023",
       title: "Status Documents 1 & 2",
       description: "Project status documentation - Mark Allocation: 2% (Individual)"
     },
     {
-      date: "June 2025",
+      date: "October 2023",
       title: "Log Books",
       description: "Research and development logbooks - Mark Allocation: 2% (Individual)"
     },
     {
-      date: "May 2025",
+      date: "October 2023",
       title: "Final Presentation + Viva",
       description: "Final project presentation and viva defense - Mark Allocation: 20% (Group & Individual)"
     },
     {
-      date: "June 2025",
+      date: "November 2023",
       title: "Website Development",
       description: "Development of project website for research dissemination - Mark Allocation: 2% (Group)"
     }
