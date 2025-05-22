@@ -6,6 +6,7 @@ import { useInView } from '../hooks/useInView';
 import AnimatedLetters from './AnimatedLetters';
 import StaggerContainer from './StaggerContainer';
 import FadeInAnimation from './FadeInAnimation';
+import AnimatedHeading from './AnimatedHeading';
 
 interface ContactFormData {
   name: string;
@@ -185,21 +186,14 @@ export default function ContactSection() {
         />
       ))}
       
-      <div className="max-w-6xl mx-auto relative">
-        <FadeInAnimation>
-          <div className="relative p-2 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 inline-block mx-auto mb-3">
-            <div className="bg-white p-2 rounded-full">
-              <div className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 text-transparent bg-clip-text">
-                <h2 className="text-3xl md:text-4xl font-bold text-center">
-                  <AnimatedLetters text="Contact Us" staggerDuration={0.05} initialDelay={0.2} />
-                </h2>
-              </div>
-            </div>
-          </div>
-          <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-            Have questions about our research? Get in touch with our team using the form below.
-          </p>
-        </FadeInAnimation>
+      <div className="max-w-6xl mx-auto relative">        <FadeInAnimation>          <AnimatedHeading 
+            text="CONTACT US" 
+            staggerDuration={0.05} 
+            initialDelay={0.2}
+            className="text-center"
+          />
+          <br></br>
+       </FadeInAnimation>
         
         <div className="grid md:grid-cols-2 gap-12">
           <StaggerContainer delay={0.3} staggerDelay={0.15} className="space-y-8 md:pr-6">

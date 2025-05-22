@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
+import AnimatedHeading from './AnimatedHeading';
 
 export default function DomainSection() {
   const { ref, isInView } = useInView<HTMLDivElement>({
@@ -69,25 +70,20 @@ export default function DomainSection() {
   ];
 
   return (
-    <section id="domain" className="py-20 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+    <section id="domain" className="py-20 relative overflow-hidden bg-gradient-to-b from-blue-50 to-blue-100">
       {/* Glassmorphism background effects */}
       <div className="absolute top-0 right-0 -translate-y-1/2 w-96 h-96 rounded-full bg-blue-200/30 blur-3xl"></div>
       <div className="absolute bottom-0 left-0 translate-y-1/4 w-96 h-96 rounded-full bg-purple-200/30 blur-3xl"></div>
       
-      <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <motion.div
+      <div className="container mx-auto px-4 max-w-7xl relative z-10">        <motion.div
           ref={ref}
           variants={sectionVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="text-center mb-16"
-        >
-          <motion.h2 
-            variants={itemVariants} 
-            className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-blue-600"
-          >
-            Research Overview
-          </motion.h2>
+        >          <AnimatedHeading 
+            text="RESEARCH DOMAIN"
+          />
           <motion.p 
             variants={itemVariants}
             className="text-gray-600 max-w-3xl mx-auto text-lg"

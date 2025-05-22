@@ -1,10 +1,20 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import AnimatedLetters from './AnimatedLetters';
 import StaggerContainer from './StaggerContainer';
+import AnimatedHeading from './AnimatedHeading';
+
+// Import document images from the presentations folder
+import charter from '../../public/presentations/charter.png';
+import proposal from '../../public/presentations/propre.png';
+import research from '../../public/presentations/rp.png';
+import finalThesis from '../../public/presentations/final.png';
+import statusDoc from '../../public/presentations/status.png';
+import logbook from '../../public/presentations/lobook.png';
 
 interface Document {
   id: string;
@@ -39,7 +49,7 @@ export default function DocumentsSection() {
       id: "doc1",
       title: "Project Charter",
       description: "Formal document outlining the project scope, objectives, and participants",
-      fileUrl: "https://drive.google.com/drive/folders/1POOn5VfvSxTIXLUGhizWIRMDsWmlW4dw?usp=sharing",
+      fileUrl: "https://drive.google.com/file/d/1DSNh1zQvkBV5hzxFLIvLH8AVCzZG3Q_B/view?usp=sharing",
       fileSize: "1.8 MB",
       dateAdded: "2024-06-15",
       iconType: "pdf"
@@ -84,7 +94,7 @@ export default function DocumentsSection() {
       id: "doc6",
       title: "Research Logbook",
       description: "Detailed documentation of research activities, methodologies, and findings",
-      fileUrl: "/documents/document3.pdf",
+      fileUrl: "https://drive.google.com/drive/folders/1iRwy-Vzsjq91FzkXGJsP04_Vqj_FvTJ6?usp=sharing",
       fileSize: "4.3 MB",
       dateAdded: "2025-04-12",
       iconType: "zip"
@@ -125,12 +135,12 @@ export default function DocumentsSection() {
       }
     }
   };
-
   const downloadButtonVariants = {
     initial: { scale: 1 },
     hover: { 
       scale: 1.05,
       backgroundColor: "#2563EB", // blue-700
+      boxShadow: "0px 8px 15px rgba(37, 99, 235, 0.3)",
       transition: {
         duration: 0.2,
         ease: "easeInOut"
@@ -151,39 +161,93 @@ export default function DocumentsSection() {
       }
     }
   };
-
-  // Function to render the appropriate icon based on document type
-  const renderDocumentIcon = (type: Document['iconType'] = 'other') => {
-    switch(type) {
-      case 'pdf':
+  // Function to render the appropriate image based on document title
+  const renderDocumentIcon = (doc: Document) => {
+    // Map document titles to their respective images
+    switch(doc.title) {
+      case "Project Charter":
         return (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
+          <div className="relative w-24 h-24">
+            <Image 
+              src={charter} 
+              alt="Project Charter" 
+              className="object-contain rounded-md shadow-sm" 
+              fill
+              sizes="100px"
+            />
+          </div>
         );
-      case 'doc':
+      case "Project Proposal":
         return (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01" />
-          </svg>
+          <div className="relative w-24 h-24">
+            <Image 
+              src={proposal} 
+              alt="Project Proposal" 
+              className="object-contain rounded-md shadow-sm" 
+              fill
+              sizes="100px"
+            />
+          </div>
         );
-      case 'image':
+      case "Research Paper":
         return (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
+          <div className="relative w-24 h-24">
+            <Image 
+              src={research} 
+              alt="Research Paper" 
+              className="object-contain rounded-md shadow-sm" 
+              fill
+              sizes="100px"
+            />
+          </div>
         );
-      case 'zip':
+      case "Final Thesis":
         return (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-          </svg>
+          <div className="relative w-24 h-24">
+            <Image 
+              src={finalThesis} 
+              alt="Final Thesis" 
+              className="object-contain rounded-md shadow-sm" 
+              fill
+              sizes="100px"
+            />
+          </div>
+        );
+      case "Status Document":
+        return (
+          <div className="relative w-24 h-24">
+            <Image 
+              src={statusDoc} 
+              alt="Status Document" 
+              className="object-contain rounded-md shadow-sm" 
+              fill
+              sizes="100px"
+            />
+          </div>
+        );
+      case "Research Logbook":
+        return (
+          <div className="relative w-24 h-24">
+            <Image 
+              src={logbook} 
+              alt="Research Logbook" 
+              className="object-contain rounded-md shadow-sm" 
+              fill
+              sizes="100px"
+            />
+          </div>
         );
       default:
         return (
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          </svg>
+          <div className="relative w-24 h-24">
+            <Image 
+              src={research} 
+              alt="Document" 
+              className="object-contain rounded-md shadow-sm" 
+              fill
+              sizes="100px"
+            />
+          </div>
         );
     }
   };
@@ -196,9 +260,12 @@ export default function DocumentsSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="mb-8 text-center"
-        >          <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">
-            <AnimatedLetters text="Project Documents" staggerDuration={0.05} initialDelay={0.2} />
-          </h2>
+        >          <AnimatedHeading 
+            text="PROJECT DOCUMENTS" 
+            staggerDuration={0.05} 
+            initialDelay={0.2}
+            className="text-center" 
+          />
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -210,17 +277,17 @@ export default function DocumentsSection() {
         </motion.div>
         
         <StaggerContainer delay={0.3} staggerDelay={0.2} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {documents.map((doc, index) => (
-            <motion.div 
+          {documents.map((doc, index) => (            <motion.div 
               key={doc.id} 
               custom={index}
               variants={documentCardVariants}
               whileHover="hover"
-              className="bg-white rounded-lg border border-gray-100 shadow-md overflow-hidden flex flex-col aspect-square"
+              className="bg-white rounded-lg border border-gray-100 shadow-md overflow-hidden flex flex-col"
+              style={{ minHeight: "450px" }}
             >
               <div className="p-6 flex-1 flex flex-col">
                 <div className="flex items-center justify-center mb-5">
-                  {renderDocumentIcon(doc.iconType)}
+                  {renderDocumentIcon(doc)}
                 </div>
                 
                 <motion.h3 
@@ -260,28 +327,33 @@ export default function DocumentsSection() {
                     {formatDate(doc.dateAdded)}
                   </span>
                 </motion.div>
+                
+                <div className="flex w-full">
+                  <motion.div
+                    variants={downloadButtonVariants}
+                    initial="initial"
+                    whileHover="hover"
+                    whileTap="tap"
+                    className="relative flex-1"
+                  >
+                    {/* Pulse animation for attention */}
+                    <div className="absolute -inset-1 bg-blue-500/30 rounded-lg blur-sm animate-pulse"></div>
+                    <Link 
+                      href={doc.fileUrl}
+                      className="relative block text-center py-3 bg-blue-600 text-white font-medium transition duration-300 hover:bg-blue-700 rounded-lg shadow-md"
+                      download
+                    >
+                      <motion.div variants={downloadIconVariants} className="inline-flex items-center justify-center w-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        <span className="font-semibold tracking-wide">
+                          Download
+                        </span>
+                      </motion.div>
+                    </Link>                  </motion.div>
+                </div>
               </div>
-              
-              <motion.div
-                variants={downloadButtonVariants}
-                initial="initial"
-                whileHover="hover"
-                whileTap="tap"
-                className="mt-auto"
-              >
-                <Link 
-                  href={doc.fileUrl}
-                  className="block text-center py-3 bg-primary text-white font-medium transition duration-300 hover:bg-primary-dark"
-                  download
-                >
-                  <motion.div variants={downloadIconVariants} className="inline-flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    Download
-                  </motion.div>
-                </Link>
-              </motion.div>
             </motion.div>
           ))}
         </StaggerContainer>

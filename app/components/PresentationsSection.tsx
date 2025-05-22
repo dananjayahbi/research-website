@@ -6,8 +6,16 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import AnimatedLetters from './AnimatedLetters';
-import StaggerContainer from './StaggerContainer';
-import fileSvg from '../../public/file.svg';
+import AnimatedHeading from './AnimatedHeading';
+
+
+
+import final from '../../public/presentations/finalpre.png';
+import pp1 from '../../public/presentations/pp1.png';
+import pp2 from '../../public/presentations/pp2.png';
+import propre from '../../public/presentations/pro.png';
+import rp from '../../public/presentations/rp.png';
+
 
 interface Presentation {
   id: string;
@@ -73,8 +81,7 @@ export default function PresentationsSection() {
       }
     };
   }, []);
-  
-  // Sample presentations data
+    // Sample presentations data
   const presentations: Presentation[] = [
     {
       id: "pres1",
@@ -96,7 +103,7 @@ export default function PresentationsSection() {
       id: "pres3",
       title: "Progress Presentation-2",
       description: "Second progress update with detailed analysis and results from ongoing research",
-      fileUrl: "/presentations/presentation3.pdf",
+      fileUrl: "https://drive.google.com/drive/folders/1wjxoK48yf7KFus8FzbRQgOF_5I5HujcP?usp=drive_link",
       fileSize: "6.5 MB",
       dateAdded: "2025-03-22"
     },
@@ -163,7 +170,6 @@ export default function PresentationsSection() {
       }
     }
   };
-
   const buttonVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { 
@@ -177,6 +183,7 @@ export default function PresentationsSection() {
     hover: { 
       scale: 1.05,
       backgroundColor: "#2563EB", // blue-700
+      boxShadow: "0px 8px 15px rgba(37, 99, 235, 0.3)",
       transition: {
         type: "spring",
         stiffness: 400,
@@ -194,10 +201,12 @@ export default function PresentationsSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="mb-8 text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">
-            <AnimatedLetters text="Project Presentations" staggerDuration={0.05} initialDelay={0.2} />
-          </h2>
+        >          <AnimatedHeading
+            text="PROJECT PRESENTATIONS"
+            staggerDuration={0.05}
+            initialDelay={0.2}
+            className="text-center"
+          />
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -219,25 +228,24 @@ export default function PresentationsSection() {
               variants={cardVariants}
               whileHover="hover"
               className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 transition duration-300 flex-shrink-0 w-full md:w-[350px] snap-center"
-            >
-              <motion.div 
-                className="relative h-48 bg-gradient-to-br from-primary-light to-primary flex items-center justify-center overflow-hidden"
+            >              <motion.div 
+                className="relative h-48 bg-white flex items-center justify-center overflow-hidden border-b border-gray-100"
                 whileHover="hover"
               >
-                <div className="absolute w-full h-full opacity-10">
-                  <div className="absolute -top-16 -left-16 w-40 h-40 bg-white rounded-full opacity-20"></div>
-                  <div className="absolute -bottom-16 -right-16 w-40 h-40 bg-white rounded-full opacity-20"></div>
-                </div>
-                <motion.div variants={imageVariants}>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-50"></div>
+                <motion.div variants={imageVariants} className="relative z-10 p-2">
                   <Image
-                    src={fileSvg}
+                    src={index === 0 ? propre : 
+                         index === 1 ? pp1 : 
+                         index === 2 ? pp2 : 
+                         index === 3 ? final : rp}
                     alt={`${presentation.title} thumbnail`}
-                    width={80}
-                    height={80}
-                    className="opacity-80"
+                    width={260}
+                    height={135}
+                    className="object-contain rounded-md shadow-md"
+                    style={{ maxHeight: "140px" }}
                   />
-                </motion.div>
-                <div className="absolute top-3 right-3 bg-white/90 text-primary text-xs font-medium py-1 px-2 rounded-full">
+                </motion.div>                <div className="absolute top-3 right-3 bg-primary/90 text-white text-xs font-medium py-1 px-2 rounded-full shadow-sm">
                   Presentation
                 </div>
               </motion.div>
@@ -278,16 +286,18 @@ export default function PresentationsSection() {
                     {formatDate(presentation.dateAdded)}
                   </span>
                 </motion.div>
-                <motion.div
-                  variants={buttonVariants}
+                <motion.div                  variants={buttonVariants}
                   whileHover="hover"
                   whileTap="tap"
+                  className="relative"
                 >
-                  <Link 
+                  {/* Pulse animation for attention */}
+                  <div className="absolute -inset-1 bg-blue-500/30 rounded-lg blur-sm animate-pulse"></div>                  <Link 
                     href={presentation.fileUrl}
-                    className="inline-flex items-center w-full justify-center px-4 py-2 bg-primary text-white rounded-md transition duration-300"
+                    className="relative inline-flex items-center w-full justify-center px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition duration-300 shadow-md font-medium overflow-hidden group"
                     download
                   >
+                    <span className="absolute inset-0 w-full h-full bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></span>
                     <motion.svg 
                       xmlns="http://www.w3.org/2000/svg" 
                       className="h-5 w-5 mr-2" 
@@ -304,33 +314,16 @@ export default function PresentationsSection() {
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                     </motion.svg>
-                    Download Presentation
+                    <span className="relative z-10 font-semibold tracking-wide text-white">
+                      Download
+                    </span>
                   </Link>
                 </motion.div>
               </div>
             </motion.div>
           ))}
         </div>
-        
-        <div className="flex justify-center mt-8 space-x-2">
-          {presentations.map((_, i) => (
-            <motion.div 
-              key={i}
-              className={`h-2 w-2 rounded-full cursor-pointer ${i === activeIndex ? 'bg-blue-500' : 'bg-gray-300'}`}
-              whileHover={{ scale: 1.2 }}
-              onClick={() => {
-                const container = scrollContainerRef.current;
-                const items = container?.querySelectorAll('.snap-center');
-                if (container && items?.[i]) {
-                  container.scrollTo({
-                    left: (items[i] as HTMLElement).offsetLeft - 16,
-                    behavior: 'smooth'
-                  });
-                }
-              }}
-            />
-          ))}
-        </div>
+          {/* Navigation dots removed as requested */}
       </div>
     </section>
   );

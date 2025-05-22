@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import AnimatedLetters from './AnimatedLetters';
 import GradientText from './GradientText';
 import ParallaxAnimation from './ParallaxAnimation';
+import AnimatedHeading from './AnimatedHeading';
 import { useEffect, useState, useRef } from 'react';
 
 export default function HeroSection() {
@@ -17,18 +18,19 @@ export default function HeroSection() {
     }
   }, []);  
   
-  return (
-    <section id="hero" className="min-h-[90vh] flex flex-col items-center justify-center py-36 px-4 text-center relative overflow-hidden">
+  return (    
+    <section id="hero" className="min-h-[100vh] flex flex-col items-center justify-center py-36 px-4 text-center relative overflow-hidden">      
       {/* Video Background */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] z-10"></div>
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] z-10"></div>        
         <video
           ref={videoRef}
-          className="absolute w-full h-full object-cover"
+          className="absolute w-full h-full object-cover object-center"
           autoPlay
           loop
           muted
           playsInline
+          style={{ width: "100%", height: "110%", objectFit: "cover", objectPosition: "center" }}
         >
           <source src="/images/video chat.mp4" type="video/mp4" />
         </video>
@@ -65,27 +67,24 @@ export default function HeroSection() {
             repeatType: "mirror",
           }}
         />
-      </ParallaxAnimation>
-
-      {/* Title with gradient and animated letters */}      <motion.div
-        className="mb-8 mt-12"
+      </ParallaxAnimation>      
+      
+      {/* Title with animated gradient text */}
+      <motion.div
+        className="mb-8"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <GradientText 
-          text="MIRROR APP" 
-          from="from-white" 
-          via="via-blue-200" 
-          to="to-white" 
-          fontSize="text-5xl md:text-6xl lg:text-7xl"
-          animate={true}
-          duration={5}
+        <AnimatedHeading
+          text="MIRROR APP"
+          className="text-6xl md:text-7xl lg:text-8xl"
         />
       </motion.div>
 
       <ParallaxAnimation direction="up" speed={0.3} offset={20}>
-        <motion.p          className="text-base md:text-lg max-w-4xl mb-12 text-white/90 leading-relaxed"
+        <motion.p          
+          className="text-base md:text-lg max-w-4xl mb-12 text-white/90 leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
           transition={{ duration: 0.8, delay: 0.6 }}
