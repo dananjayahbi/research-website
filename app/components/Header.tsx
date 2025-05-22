@@ -193,7 +193,7 @@ export default function Header() {
               >
                 MIRROR
               </motion.span>
-            </a></motion.div>          {/* Desktop Navigation */}          <nav className="hidden md:flex items-center justify-center flex-1">
+            </a>          </motion.div>          {/* Desktop Navigation */}          <nav className="hidden md:flex items-center justify-center flex-1">
             <ul className="flex space-x-6 md:space-x-8">
               {navLinks.map((link, index) => (
                 <motion.li 

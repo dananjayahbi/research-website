@@ -26,7 +26,6 @@ export default function TechnologiesSection() {
   });
   
   const [activeCategory, setActiveCategory] = useState("All");
-
   const technologies = [
     {
       name: "TensorFlow",
