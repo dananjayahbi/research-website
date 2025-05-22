@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -35,32 +36,78 @@ export default function PresentationsSection() {
     triggerOnce: true
   });
   
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!scrollContainerRef.current) return;
+      
+      const container = scrollContainerRef.current;
+      const items = container.querySelectorAll('.snap-center');
+      const containerRect = container.getBoundingClientRect();
+      
+      let closestIndex = 0;
+      let minDistance = Infinity;
+      
+      items.forEach((item, index) => {
+        const rect = item.getBoundingClientRect();
+        const distance = Math.abs(rect.left - containerRect.left);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = index;
+        }
+      });
+      
+      setActiveIndex(closestIndex);
+    };
+    
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll);
+    }
+    
+    return () => {
+      if (container) {
+        container.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
+  
   // Sample presentations data
   const presentations: Presentation[] = [
     {
       id: "pres1",
-      title: "Project Overview",
-      description: "A comprehensive overview of our research project and goals",
+      title: "Proposal Presentation",
+      description: "Initial project proposal presentation outlining the research goals and methodology",
       fileUrl: "/presentations/presentation1.pdf",
-      fileSize: "5.2 MB",
-      dateAdded: "2025-01-20"
+      fileSize: "4.8 MB",
+      dateAdded: "2024-07-15"
     },
     {
       id: "pres2",
-      title: "Interim Findings",
-      description: "Presentation of interim research findings and progress update",
+      title: "Progress Presentation-1",
+      description: "First progress update showcasing initial findings and implementation progress",
       fileUrl: "/presentations/presentation2.pdf",
-      fileSize: "4.7 MB",
-      dateAdded: "2025-03-05"
+      fileSize: "5.2 MB",
+      dateAdded: "2024-12-10"
     },
     {
       id: "pres3",
-      title: "Methodology Explanation",
-      description: "Detailed explanation of research methodologies employed",
+      title: "Progress Presentation-2",
+      description: "Second progress update with detailed analysis and results from ongoing research",
       fileUrl: "/presentations/presentation3.pdf",
-      fileSize: "3.9 MB",
-      dateAdded: "2025-04-12"
+      fileSize: "6.5 MB",
+      dateAdded: "2025-03-22"
     },
+    {
+      id: "pres4",
+      title: "Final Presentation",
+      description: "Comprehensive presentation of the complete research project and findings",
+      fileUrl: "/presentations/presentation3.pdf",
+      fileSize: "7.3 MB",
+      dateAdded: "2025-04-15"
+    }
   ];
 
   // Animation variants
@@ -155,20 +202,23 @@ export default function PresentationsSection() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-center text-gray-600 max-w-2xl mx-auto mb-12"
+            className="text-center text-gray-600 max-w-2xl mx-auto mb-8"
           >
-            Access and download presentation slides from various project milestones.
+            Scroll through all presentation slides from MIRROR project milestones in a single row.
           </motion.p>
         </motion.div>
         
-        <StaggerContainer delay={0.3} staggerDelay={0.15} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div 
+          ref={scrollContainerRef} 
+          className="flex flex-nowrap overflow-x-auto gap-6 pb-4 -mx-4 px-4 snap-x scroll-smooth"
+        >
           {presentations.map((presentation, index) => (
             <motion.div 
               key={presentation.id} 
               custom={index}
               variants={cardVariants}
               whileHover="hover"
-              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 transition duration-300"
+              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 transition duration-300 flex-shrink-0 w-full md:w-[350px] snap-center"
             >
               <motion.div 
                 className="relative h-48 bg-gradient-to-br from-primary-light to-primary flex items-center justify-center overflow-hidden"
@@ -260,7 +310,27 @@ export default function PresentationsSection() {
               </div>
             </motion.div>
           ))}
-        </StaggerContainer>
+        </div>
+        
+        <div className="flex justify-center mt-8 space-x-2">
+          {presentations.map((_, i) => (
+            <motion.div 
+              key={i}
+              className={`h-2 w-2 rounded-full cursor-pointer ${i === activeIndex ? 'bg-blue-500' : 'bg-gray-300'}`}
+              whileHover={{ scale: 1.2 }}
+              onClick={() => {
+                const container = scrollContainerRef.current;
+                const items = container?.querySelectorAll('.snap-center');
+                if (container && items?.[i]) {
+                  container.scrollTo({
+                    left: (items[i] as HTMLElement).offsetLeft - 16,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

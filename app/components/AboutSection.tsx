@@ -76,22 +76,20 @@ export default function AboutSection() {
       }
     }
   };
-  
-  const stats = [
-    { number: "5+", label: "Years Research" },
-    { number: "25+", label: "Publications" },
-    { number: "12", label: "Team Members" },
-    { number: "8", label: "Partner Institutions" }
+    const stats = [
+    { number: "3", label: "Detection Modes" },
+    { number: "90%+", label: "Accuracy Rate" },
+    { number: "7", label: "Team Members" },
+    { number: "24/7", label: "Support Access" }
   ];
-  
-  const features = [
-    "Real-time data processing and visualization",
-    "Multi-modal analysis capabilities",
-    "Collaborative workspaces for research teams",
-    "Advanced statistical modeling tools",
-    "Integration with existing research databases",
-    "Secure data storage and sharing protocols",
-    "Custom report generation and publication support"
+    const features = [
+    "Multimodal depression detection (facial, voice, text)",
+    "AI-powered conversational companion",
+    "Real-time mental health assessment",
+    "Personalized support recommendations",
+    "Secure and private user data handling",
+    "Integration with mental health resources",
+    "Early intervention identification system"
   ];
   
   return (
@@ -113,18 +111,17 @@ export default function AboutSection() {
             className="space-y-16"
           >
             {/* Section heading */}
-            <motion.div className="text-center max-w-3xl mx-auto" variants={itemVariants}>
-              <motion.div className="mb-4">
+            <motion.div className="text-center max-w-3xl mx-auto" variants={itemVariants}>              <motion.div className="mb-4">
                 <h2 className="text-4xl md:text-5xl font-bold mb-2 tracking-tight">
-                  <AnimatedLetters text="About Our " staggerDuration={0.05} initialDelay={0.2} />
-                  <span className="gradient-text">Research</span>
+                  <AnimatedLetters text="About " staggerDuration={0.05} initialDelay={0.2} />
+                  <span className="gradient-text">MIRROR</span>
                 </h2>
               </motion.div>
               <motion.p 
                 className="text-lg text-gray-600 leading-relaxed"
                 variants={itemVariants}
               >
-                We're at the forefront of innovative scientific research, committed to solving real-world problems through interdisciplinary collaboration and cutting-edge technology.
+                Mental health detection and support through multimodal analysis of facial expressions, voice patterns, and text sentiment.
               </motion.p>
             </motion.div>
             
@@ -160,13 +157,12 @@ export default function AboutSection() {
                 <motion.h3 className="text-2xl font-semibold text-gray-800" variants={itemVariants}>
                   Our Research Focus
                 </motion.h3>
-                
-                <motion.p className="text-gray-600 leading-relaxed" variants={itemVariants}>
-                  Our research project focuses on developing innovative solutions to address complex scientific challenges through an interdisciplinary approach. By combining expertise from various fields, we aim to create comprehensive frameworks for data analysis and interpretation.
+                  <motion.p className="text-gray-600 leading-relaxed" variants={itemVariants}>
+                  Our research project titled "MIRROR: Depression Symptoms Detection through Facial, Voice, and Text Analysis with a Conversational Companion for Prevention" focuses on developing an innovative AI-based solution to detect and help prevent depression. Using a multimodal approach combining facial expression analysis, voice pattern recognition, and text sentiment analysis, we aim to create an early detection system for depressive symptoms.
                 </motion.p>
                 
                 <motion.p className="text-gray-600 leading-relaxed" variants={itemVariants}>
-                  The system supports collaborative research across multiple disciplines, fostering innovation and accelerating scientific discovery in fields ranging from climate science to genomics.
+                  The MIRROR app incorporates a conversational companion designed to provide support, evaluate mental health status, and connect users with appropriate resources. This research represents a significant step toward addressing mental health challenges through accessible technology that promotes early intervention and support.
                 </motion.p>
                 
                 <motion.div variants={itemVariants} className="pt-4">

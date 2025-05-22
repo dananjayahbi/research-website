@@ -28,10 +28,9 @@ export default function Header() {
       } else {
         setIsScrolled(false);
       }
-      
-      // Update active link based on scroll position
+        // Update active link based on scroll position
       const sections = navLinks.map(link => link.href.replace('#', ''));
-      const scrollPosition = window.scrollY + 80; // Reduced offset for smaller header
+      const scrollPosition = window.scrollY + 100; // Adjusted offset for larger header
       
       for(let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i]);
@@ -159,46 +158,36 @@ export default function Header() {
     },
     tap: { 
       scale: 0.95 
-    }
-  };
-  return (    <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900 text-white bg-opacity-95 backdrop-blur-sm shadow-sm ${
+    }  };  return (    <motion.header      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-gray-900 text-white bg-opacity-95 backdrop-blur-sm shadow-md pl-0 ${
         isScrolled
-          ? 'py-1.5'
-          : 'py-2'
+          ? 'py-3'
+          : 'py-4'
       }`}
       variants={headerVariants}
       initial="hidden"
-      animate="visible"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-10">
-          <motion.div 
-            className="flex items-center"
+      animate="visible"    >      <div className="w-full max-w-full mx-0 px-0">
+        <div className="flex items-center h-14">          <motion.div 
+            className="flex items-center ml-8 md:ml-12 lg:ml-16"
             variants={logoVariants}
-          >
-            <a 
+          >            <a 
               href="#hero" 
               onClick={(e) => handleNavClick(e, '#hero')}
-              className="flex items-center"
-            >              <motion.span 
-                className="text-lg font-bold gradient-text mr-1.5"
-                whileHover={{ scale: 1.05, rotate: 3 }}
+              className="flex items-center pl-3"
+            ><motion.span 
+                className="text-2xl font-bold gradient-text mr-2"                whileHover={{ scale: 1.05, rotate: 3 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                R
+                M
               </motion.span>
               <motion.span 
-                className="font-medium text-sm text-white"
+                className="font-medium text-lg text-white"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                Research Project
+                MIRROR
               </motion.span>
-            </a>
-          </motion.div>          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center">
-            <ul className="flex space-x-3">
+            </a>          </motion.div>          {/* Desktop Navigation */}          <nav className="hidden md:flex items-center justify-center flex-1">
+            <ul className="flex space-x-6 md:space-x-8">
               {navLinks.map((link, index) => (
                 <motion.li 
                   key={index}
@@ -206,8 +195,7 @@ export default function Header() {
                   variants={navItemVariants}
                   whileHover="hover"
                 >                  <a
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}                    className={`relative px-2 py-1 text-sm font-medium transition-colors cursor-pointer group ${
+                    href={link.href}                    onClick={(e) => handleNavClick(e, link.href)}                    className={`relative px-3 py-2 text-base font-medium transition-colors cursor-pointer group ${
                       activeLink === link.href.replace('#', '') 
                         ? 'text-blue-300 font-semibold'
                         : 'text-gray-200 hover:text-blue-300'
@@ -226,24 +214,22 @@ export default function Header() {
                 </motion.li>
               ))}
             </ul>
-          </nav>
-
-          {/* Mobile Menu Button */}          <motion.button
+          </nav>          {/* Mobile Menu Button */}          <motion.button
             type="button"
-            className="md:hidden flex items-center"
+            className="md:hidden flex items-center ml-auto mr-4"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
             variants={menuButtonVariants}
             whileHover="hover"
             whileTap="tap"
-          >            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+          ><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
               {isMobileMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               ) : (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               )}
-            </svg>
-          </motion.button>
+            </svg>          </motion.button>
+          <div className="hidden md:block ml-8 md:ml-12 lg:ml-16 w-8"></div>
         </div>
       </div>
 
@@ -264,8 +250,7 @@ export default function Header() {
                     variants={mobileNavItemVariants}
                     custom={index}
                   >                    <a
-                      href={link.href}
-                      className={`block py-2 px-3 rounded-sm text-sm ${
+                      href={link.href}                      className={`block py-3 px-4 rounded-sm text-base ${
                         activeLink === link.href.replace('#', '') 
                           ? 'bg-blue-500/15 text-blue-300 font-medium' 
                           : 'text-gray-300 hover:bg-gray-800'

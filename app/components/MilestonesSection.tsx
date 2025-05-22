@@ -15,42 +15,46 @@ export default function MilestonesSection() {
     threshold: 0.1,
     triggerOnce: false
   });
-
   const milestones: Milestone[] = [
     {
-      date: "January 2024",
-      title: "Project Initiation",
-      description: "Initial research proposal approved and project planning begins"
+      date: "July 2024",
+      title: "Project Proposal",
+      description: "Project Proposal (Presentation + Proposal Report) - Mark Allocation: 15%"
     },
     {
-      date: "March 2024",
-      title: "Methodology Development",
-      description: "Research methodologies finalized and initial data collection begins"
-    },
-    {
-      date: "June 2024",
-      title: "Data Collection Complete",
-      description: "Primary research data collected and organized for analysis"
-    },
-    {
-      date: "August 2024",
-      title: "Analysis Phase",
-      description: "Comprehensive analysis of collected data using advanced statistical methods"
-    },
-    {
-      date: "November 2024",
-      title: "Interim Findings",
-      description: "Preliminary research findings presented to stakeholders"
-    },
-    {
-      date: "February 2025",
-      title: "Peer Review Process",
-      description: "Research undergoes rigorous peer review process for validation"
+      date: "December 2024",
+      title: "Progress Presentation-1",
+      description: "First progress presentation to stakeholders - Mark Allocation: 15%"
     },
     {
       date: "April 2025",
-      title: "Publication Preparation",
-      description: "Final report preparation and submission for publication"
+      title: "Final Reports (Thesis)",
+      description: "Submission of final thesis documentation - Mark Allocation: 19% (Group & Individual)"
+    },
+    {
+      date: "March 2025",
+      title: "Progress Presentation-2",
+      description: "Second progress presentation with detailed findings - Mark Allocation: 18% (Group & Individual)"
+    },
+    {
+      date: "June 2025",
+      title: "Status Documents 1 & 2",
+      description: "Project status documentation - Mark Allocation: 2% (Individual)"
+    },
+    {
+      date: "June 2025",
+      title: "Log Books",
+      description: "Research and development logbooks - Mark Allocation: 2% (Individual)"
+    },
+    {
+      date: "May 2025",
+      title: "Final Presentation + Viva",
+      description: "Final project presentation and viva defense - Mark Allocation: 20% (Group & Individual)"
+    },
+    {
+      date: "June 2025",
+      title: "Website Development",
+      description: "Development of project website for research dissemination - Mark Allocation: 2% (Group)"
     }
   ];
 
@@ -140,6 +144,18 @@ export default function MilestonesSection() {
     }
   };
 
+  // Array of blue gradient backgrounds for the milestone boxes
+  const blueGradients = [
+    "bg-gradient-to-br from-blue-400 to-blue-600",
+    "bg-gradient-to-br from-blue-500 to-indigo-600",
+    "bg-gradient-to-br from-cyan-400 to-blue-500",
+    "bg-gradient-to-br from-blue-400 to-blue-700",
+    "bg-gradient-to-br from-indigo-400 to-blue-500",
+    "bg-gradient-to-br from-sky-400 to-blue-600",
+    "bg-gradient-to-br from-blue-500 to-purple-600",
+    "bg-gradient-to-br from-cyan-500 to-blue-600"
+  ];
+
   return (
     <section id="milestones" className="py-20 px-4 bg-white" ref={ref}>
       <div className="max-w-6xl mx-auto">
@@ -148,8 +164,7 @@ export default function MilestonesSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="mb-8 text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">
+        >          <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">
             <AnimatedLetters text="Project Milestones" staggerDuration={0.05} initialDelay={0.2} />
           </h2>
           <motion.p
@@ -158,14 +173,14 @@ export default function MilestonesSection() {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-center text-gray-600 max-w-2xl mx-auto mb-12"
           >
-            Key achievements and milestones in our research journey.
+            Key assessment points and deliverables in the MIRROR project timeline, with mark allocations.
           </motion.p>
         </motion.div>
         
         <div className="relative">
           {/* Timeline line */}
           <motion.div 
-            className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary-light via-primary to-primary-dark"
+            className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-400 via-blue-500 to-blue-600"
             variants={lineVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -186,7 +201,7 @@ export default function MilestonesSection() {
                 <motion.div 
                   custom={index}
                   variants={dotVariants}
-                  className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-primary border-4 border-white shadow-md z-10"
+                  className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-500 border-4 border-white shadow-md z-10"
                   whileHover={{ 
                     scale: 1.5, 
                     backgroundColor: "#3b82f6", 
@@ -202,16 +217,16 @@ export default function MilestonesSection() {
                   whileHover="hover"
                 >
                   <motion.div 
-                    className="bg-white rounded-lg p-6 border border-gray-100 shadow-sm"
+                    className={`${blueGradients[index % blueGradients.length]} rounded-lg p-6 border border-blue-300 shadow-lg text-white`}
                   >
                     <motion.span 
-                      className="inline-block text-sm font-semibold text-white px-3 py-1 rounded-full bg-primary mb-3"
+                      className="inline-block text-sm font-semibold bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full mb-3"
                       variants={dateVariants}
                     >
                       {milestone.date}
                     </motion.span>
                     <motion.h3 
-                      className="text-xl font-bold mb-2 text-foreground"
+                      className="text-xl font-bold mb-2 text-white"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.3 + (0.1 * index) }}
@@ -219,7 +234,7 @@ export default function MilestonesSection() {
                       {milestone.title}
                     </motion.h3>
                     <motion.p 
-                      className="text-gray-600"
+                      className="text-blue-50"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.4 + (0.1 * index) }}
@@ -232,7 +247,7 @@ export default function MilestonesSection() {
                       {[...Array(3)].map((_, i) => (
                         <motion.div 
                           key={i}
-                          className="w-1.5 h-1.5 rounded-full bg-primary-light opacity-60"
+                          className="w-1.5 h-1.5 rounded-full bg-white opacity-60"
                           initial={{ scale: 0 }}
                           animate={{ 
                             scale: [0, 1, 0],
