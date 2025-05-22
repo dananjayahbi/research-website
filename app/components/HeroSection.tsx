@@ -16,7 +16,7 @@ export default function HeroSection() {
   }, []);  
   
   return (
-    <section id="hero" className="min-h-[90vh] flex flex-col items-center justify-center py-20 px-4 text-center relative overflow-hidden">
+    <section id="hero" className="min-h-[90vh] flex flex-col items-center justify-center py-36 px-4 text-center relative overflow-hidden">
       {/* Modern background with gradient */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-gray-50 via-white to-blue-50"></div>
       
@@ -67,21 +67,14 @@ export default function HeroSection() {
         />
       </ParallaxAnimation>
 
-      {/* Title with gradient and animated letters */}
-      <motion.div
-        className="mb-8"
+      {/* Title with gradient and animated letters */}      <motion.div
+        className="mb-8 mt-12"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <AnimatedLetters 
-          text="Advanced " 
-          staggerDuration={0.04}
-          initialDelay={0.5}
-          className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground"
-        />
         <GradientText 
-          text="Research" 
+          text="MIRROR APP" 
           from="from-primary" 
           via="via-accent" 
           to="to-secondary" 

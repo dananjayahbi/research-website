@@ -5,6 +5,7 @@ import DocumentsSection from "./components/DocumentsSection";
 import PresentationsSection from "./components/PresentationsSection";
 import MilestonesSection from "./components/MilestonesSection";
 import SlideShowSection from "./components/SlideShowSection";
+import DomainSection from "./components/DomainSection";
 import TeamSection from "./components/TeamSection";
 import ContactSection from "./components/ContactSection";
 import Header from "./components/Header";
@@ -20,11 +21,11 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
-        <TechnologiesSection />
-        <DocumentsSection />
+        <TechnologiesSection />        <DocumentsSection />
         <PresentationsSection />
         <MilestonesSection />
         <SlideShowSection />
+        <DomainSection />
         <TeamSection />
         <ContactSection />
       </main>
