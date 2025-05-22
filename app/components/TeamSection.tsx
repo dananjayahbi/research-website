@@ -7,6 +7,7 @@ import AnimatedLetters from './AnimatedLetters';
 import StaggerContainer from './StaggerContainer';
 import AnimationItem from './AnimationItem';
 import Card3D from './Card3D';
+import AnimatedHeading from './AnimatedHeading';
 
 // Import team member images
 import supervisorImg from '../../public/images/team/Superviser.png';
@@ -34,12 +35,10 @@ export default function TeamSection() {
   const [hoveredMember, setHoveredMember] = useState<number | null>(null);    const teamMembers: TeamMember[] = [
     {
       id: 1,
-
       name: "Dr. Harinda Fernando",
       role: "Supervisor",
       bio: "Department of Computer Systems Engineering",
       image: supervisorImg,
-
       socialLinks: {
         twitter: "https://twitter.com",
         linkedin: "https://linkedin.com",
@@ -48,7 +47,6 @@ export default function TeamSection() {
     },
     {
       id: 2,
-
       name: "Ms. Manori Gamage",
       role: "Co-Supervisor",
       bio: "Department of Data Science Faculty of Computing",
@@ -60,7 +58,6 @@ export default function TeamSection() {
     },
     {
       id: 3,
-
       name: "Silva W.I.S.",
       role: "Researcher",
       bio: "Department of Information Technology Faculty of Computing",
@@ -72,7 +69,6 @@ export default function TeamSection() {
     },
     {
       id: 4,
-
       name: "Liyanage K.L.R.N.",
       role: "Researcher",
       bio: "Department of Information Technology Faculty of Computing",
@@ -84,7 +80,6 @@ export default function TeamSection() {
     },
     {
       id: 5,
-
       name: "Dananjaya H.B.I.", 
       role: "Researcher",
       bio: "Department of Information Technology Faculty of Computing",
@@ -97,7 +92,6 @@ export default function TeamSection() {
     },
     {
       id: 6,
-
       name: "Perera L.S.",
       role: "Researcher",
       bio: "Department of Information Technology Faculty of Computing",
@@ -119,12 +113,13 @@ export default function TeamSection() {
           transition={{ duration: 0.7 }}
           viewport={{ once: true, margin: "-100px" }}
           className="mb-12"
-        >          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-            <AnimatedLetters text="Research " staggerDuration={0.05} />
-            <span className="gradient-text">Paper Authors</span>
-          </h2>
+        >          <AnimatedHeading 
+            text="RESEARCH TEAM"
+            staggerDuration={0.05}
+            className="text-center"
+          />
           <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
-            Meet the researchers and scientists behind the MIRROR project publication.
+            Meet the researchers and Supervisors behind the MIRROR project publication.
           </p>
         </motion.div>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12" staggerDelay={0.15}>
@@ -274,7 +269,7 @@ export default function TeamSection() {
                           whileTap={{ scale: 0.9 }}
                         >
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9-3-9m-9 9a9 9 0 019-9" />
                           </svg>
                         </motion.a>
                       )}

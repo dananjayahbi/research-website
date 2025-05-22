@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import AnimatedLetters from './AnimatedLetters';
+import AnimatedHeading from './AnimatedHeading';
 
 interface Milestone {
   date: string;
@@ -164,9 +165,12 @@ export default function MilestonesSection() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="mb-8 text-center"
-        >          <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">
-            <AnimatedLetters text="Project Milestones" staggerDuration={0.05} initialDelay={0.2} />
-          </h2>
+        >          <AnimatedHeading
+            text="PROJECT MILESTONES"
+            staggerDuration={0.05}
+            initialDelay={0.2}
+            className="text-center"
+          />
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}

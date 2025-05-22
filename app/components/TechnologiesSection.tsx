@@ -5,13 +5,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { useInView } from '../hooks/useInView';
 import AnimatedLetters from './AnimatedLetters';
+import AnimatedHeading from './AnimatedHeading';
 
-// Import SVGs from the public folder
-import nextSvg from '../../public/next.svg';
-import vercelSvg from '../../public/vercel.svg';
-import fileSvg from '../../public/file.svg';
-import globeSvg from '../../public/globe.svg';
-import windowSvg from '../../public/window.svg';
+// Import technology images from the public folder
+import CNN from '../../public/technology/cnn.png';
+import Llama from '../../public/technology/llama.png';
+import EfficientNet from '../../public/technology/effeiecentnet.png';
+import TensorFlow from '../../public/technology/tensorflow.png';
+import PyTorch from '../../public/technology/pytorch.png';
+import Librosa from '../../public/technology/librosa.png';
+import MongoDB from '../../public/technology/mongo.png';
+import Python from '../../public/technology/python.jpeg';
+import MERN from '../../public/technology/mern.png';
+
 
 export default function TechnologiesSection() {
   const { ref, isInView } = useInView<HTMLDivElement>({
@@ -23,63 +29,63 @@ export default function TechnologiesSection() {
   const technologies = [
     {
       name: "TensorFlow",
-      icon: globeSvg,
+      icon:TensorFlow,
       description: "Deep learning framework for facial and voice analysis",
       color: "#FF6F00",
       category: "AI"
     },
     {
       name: "PyTorch",
-      icon: fileSvg,
+      icon: PyTorch,
       description: "Machine learning library for neural network models",
       color: "#EE4C2C",
       category: "AI"
     },
     {
       name: "Llama 3.2",
-      icon: windowSvg,
+      icon: Llama,
       description: "Large language model for conversational companion",
       color: "#6B46C1",
       category: "AI"
     },
     {
       name: "EfficientNet",
-      icon: fileSvg,
+      icon: EfficientNet,
       description: "CNN model for facial feature extraction",
       color: "#EC4899",
       category: "AI"
     },
     {
       name: "CNN-LSTM",
-      icon: globeSvg,
+      icon: CNN,
       description: "Sequential data analysis for voice/text processing",
       color: "#3B82F6",
       category: "AI"
     },
     {
       name: "Librosa",
-      icon: nextSvg,
+      icon: Librosa,
       description: "Audio analysis for voice processing",
       color: "#F59E0B",
       category: "AI"
     },
     {
       name: "Python",
-      icon: vercelSvg,
+      icon: Python,
       description: "Primary language for backend and frontend development",
       color: "#3776AB",
       category: "Backend"
     },
     {
       name: "MongoDB",
-      icon: globeSvg,
+      icon: MongoDB,
       description: "NoSQL database for scalable data storage",
       color: "#4DB33D",
       category: "Database"
     },
     {
       name: "MERN Stack",
-      icon: windowSvg,
+      icon: MERN,
       description: "MongoDB, Express, React, Node.js for website development",
       color: "#61DAFB",
       category: "Frontend"
@@ -170,12 +176,11 @@ export default function TechnologiesSection() {
         variants={sectionVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-      >
-        <motion.div className="text-center mb-16" variants={titleVariants}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            <AnimatedLetters text="MIRROR " staggerDuration={0.05} initialDelay={0.3} />
-            <span className="gradient-text">Technologies</span>
-          </h2>
+      >        <motion.div className="text-center mb-16" variants={titleVariants}>          <AnimatedHeading
+            text="MIRROR TECHNOLOGIES"
+            staggerDuration={0.05}
+            initialDelay={0.3}
+          />
           <motion.p 
             className="text-gray-600 max-w-2xl mx-auto text-lg"
             initial={{ opacity: 0 }}
@@ -194,11 +199,17 @@ export default function TechnologiesSection() {
               key={category}
               onClick={() => setActiveCategory(category)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all
-                ${category === activeCategory ? "bg-primary text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
+                ${category === activeCategory 
+                  ? "bg-gradient-to-r from-blue-600 via-primary to-purple-600 text-white shadow-lg transform scale-110 border border-blue-300/30 ring-2 ring-blue-500/20" 
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.3 + (index * 0.05), duration: 0.5 }}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ 
+                scale: category === activeCategory ? 1.15 : 1.05, 
+                y: -5,
+                boxShadow: category === activeCategory ? "0 10px 25px -5px rgba(59, 130, 246, 0.5)" : "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+              }}
               whileTap={{ scale: 0.95 }}
             >
               {category}
@@ -226,20 +237,20 @@ export default function TechnologiesSection() {
                     {tech.category}
                   </span>
                 </div>
-                
-                <motion.div 
-                  className="relative w-20 h-20 mb-4 flex items-center justify-center"
+                  <motion.div 
+                  className="relative w-24 h-24 mb-4 flex items-center justify-center"
                   variants={iconVariants}
                   whileHover="hover"
                 >
-                  <div className="w-16 h-16 rounded-full" style={{ backgroundColor: `${tech.color}20` }}></div>
+                  <div className="w-20 h-20 rounded-full" style={{ backgroundColor: `${tech.color}20` }}></div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <Image
                       src={tech.icon}
                       alt={`${tech.name} icon`}
-                      width={40}
-                      height={40}
+                      width={48}
+                      height={48}
                       className="object-contain"
+                      style={{ filter: "drop-shadow(0px 2px 3px rgba(0,0,0,0.1))" }}
                     />
                   </div>
                 </motion.div>
@@ -257,9 +268,6 @@ export default function TechnologiesSection() {
                   transition={{ type: "spring", stiffness: 400 }}
                 >
                   Learn more
-                  <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
                 </motion.button>
               </motion.div>
             ))}

@@ -171,11 +171,9 @@ export default function TechnologiesSection() {
         variants={sectionVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-      >
-        <motion.div className="text-center mb-16" variants={titleVariants}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            <AnimatedLetters text="MIRROR " staggerDuration={0.05} initialDelay={0.3} />
-            <span className="gradient-text">Technologies</span>
+      >        <motion.div className="text-center mb-16" variants={titleVariants}>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight uppercase text-black">
+            <AnimatedLetters text="MIRROR TECHNOLOGIES" staggerDuration={0.05} initialDelay={0.3} />
           </h2>
           <motion.p 
             className="text-gray-600 max-w-2xl mx-auto text-lg"

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from '../hooks/useInView';
 import AnimatedLetters from './AnimatedLetters';
+import AnimatedHeading from './AnimatedHeading';
 
 // Import slideshow images
 import slide1 from '../../public/images/slideshow/ss1.jpg';
@@ -151,20 +152,19 @@ export default function SlideShowSection() {
         duration: 0.2
       }
     }
-  };
-
-  return (
-    <section id="gallery" className="py-20 px-4 bg-gray-50" ref={ref}>
+  };  return (
+    <section id="gallery" className="py-20 px-4 bg-transparent" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           variants={titleVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="mb-8 text-center"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-2">
-            <AnimatedLetters text="Research Gallery" staggerDuration={0.05} initialDelay={0.2} />
-          </h2>
+        ><AnimatedHeading 
+            text="RESEARCH GALLERY" 
+            staggerDuration={0.05} 
+            initialDelay={0.2} 
+          />
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -173,8 +173,7 @@ export default function SlideShowSection() {
           >
             Visual documentation of our research journey and milestones.
           </motion.p>
-        </motion.div>
-        
+        </motion.div>        
         <motion.div 
           className="relative max-w-5xl mx-auto h-[400px] md:h-[500px]"
           initial={{ opacity: 0, y: 50 }}
@@ -182,7 +181,7 @@ export default function SlideShowSection() {
           transition={{ delay: 0.6, duration: 0.8 }}
         >
           {/* Display slideshow images with overlay text */}
-          <div className="relative h-full w-full rounded-xl overflow-hidden shadow-md border border-gray-100">
+          <div className="relative h-full w-full rounded-xl overflow-hidden shadow-xl border border-blue-100/30">
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={currentSlide}

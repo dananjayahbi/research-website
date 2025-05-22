@@ -14,20 +14,19 @@ import ScrollToTopButton from "./components/ScrollToTopButton";
 import ScrollProgressBar from "./components/ScrollProgressBar";
 
 export default function Home() {
-  return (
-    <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
+  return (    <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
       <Header />
-      <ScrollProgressBar height={4} color="#3B82F6" />
-      <main>
-        <HeroSection />
-        <AboutSection />
-        <TechnologiesSection />        <DocumentsSection />
-        <PresentationsSection />
-        <MilestonesSection />
-        <SlideShowSection />
-        <DomainSection />
-        <TeamSection />
-        <ContactSection />
+      <ScrollProgressBar height={4} color="#3B82F6" />        <main className="space-y-0">
+        <div><HeroSection /></div>
+        <div><AboutSection /></div>
+        <div><TechnologiesSection /></div>        
+        <div><DocumentsSection /></div>
+        <div><PresentationsSection /></div>
+        <div><MilestonesSection /></div>
+        <div><DomainSection /></div>
+        <div><SlideShowSection /></div>
+        <div><TeamSection /></div>
+        <div><ContactSection /></div>
       </main>
       <Footer />
       <ScrollToTopButton />

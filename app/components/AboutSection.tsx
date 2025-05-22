@@ -7,6 +7,7 @@ import LoadingAnimation from "./LoadingAnimation";
 import { useInView } from "../hooks/useInView";
 import AnimatedLetters from "./AnimatedLetters";
 import BounceAnimation from "./BounceAnimation";
+import AnimatedHeading from "./AnimatedHeading";
 
 export default function AboutSection() {
   const [isLoading, setIsLoading] = useState(true);
@@ -111,11 +112,11 @@ export default function AboutSection() {
             className="space-y-16"
           >
             {/* Section heading */}
-            <motion.div className="text-center max-w-3xl mx-auto" variants={itemVariants}>              <motion.div className="mb-4">
-                <h2 className="text-4xl md:text-5xl font-bold mb-2 tracking-tight">
-                  <AnimatedLetters text="About " staggerDuration={0.05} initialDelay={0.2} />
-                  <span className="gradient-text">MIRROR</span>
-                </h2>
+            <motion.div className="text-center max-w-3xl mx-auto" variants={itemVariants}>              <motion.div className="mb-4">                <AnimatedHeading
+                  text="ABOUT MIRROR"
+                  staggerDuration={0.05}
+                  initialDelay={0.2}
+                />
               </motion.div>
               <motion.p 
                 className="text-lg text-gray-600 leading-relaxed"
