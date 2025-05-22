@@ -1,29 +1,43 @@
 "use client"
 
-import Image from 'next/image';
-import hero from '../../public/images/hero-placeholder.jpg';
 import { motion } from 'framer-motion';
 import AnimatedLetters from './AnimatedLetters';
 import GradientText from './GradientText';
 import ParallaxAnimation from './ParallaxAnimation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export default function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsLoaded(true);
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
   }, []);  
   
   return (
     <section id="hero" className="min-h-[90vh] flex flex-col items-center justify-center py-36 px-4 text-center relative overflow-hidden">
-      {/* Modern background with gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-gray-50 via-white to-blue-50"></div>
-      
-      {/* Animated background elements */}
+      {/* Video Background */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px] z-10"></div>
+        <video
+          ref={videoRef}
+          className="absolute w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/images/video chat.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      {/* Animated overlay elements */}
       <ParallaxAnimation direction="up" speed={0.5} offset={80}>
         <motion.div 
-          className="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary opacity-5 -z-10 blur-3xl"
+          className="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary opacity-10 -z-5 blur-3xl"
           animate={{
             x: [50, -50, 50],
             y: [20, -20, 20],
@@ -39,7 +53,7 @@ export default function HeroSection() {
       
       <ParallaxAnimation direction="down" speed={0.5} offset={80}>
         <motion.div 
-          className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-secondary opacity-5 -z-10 blur-3xl"
+          className="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-secondary opacity-10 -z-5 blur-3xl"
           animate={{
             x: [-50, 50, -50],
             y: [-20, 20, -20],
@@ -47,20 +61,6 @@ export default function HeroSection() {
           }}
           transition={{
             duration: 18,
-            repeat: Infinity,
-            repeatType: "mirror",
-          }}
-        />
-      </ParallaxAnimation>
-      
-      <ParallaxAnimation direction="left" speed={0.3} offset={40}>
-        <motion.div 
-          className="absolute top-1/3 right-1/4 w-40 h-40 rounded-full bg-accent opacity-5 -z-10 blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            duration: 12,
             repeat: Infinity,
             repeatType: "mirror",
           }}
@@ -75,9 +75,9 @@ export default function HeroSection() {
       >
         <GradientText 
           text="MIRROR APP" 
-          from="from-primary" 
-          via="via-accent" 
-          to="to-secondary" 
+          from="from-white" 
+          via="via-blue-200" 
+          to="to-white" 
           fontSize="text-5xl md:text-6xl lg:text-7xl"
           animate={true}
           duration={5}
@@ -85,14 +85,18 @@ export default function HeroSection() {
       </motion.div>
 
       <ParallaxAnimation direction="up" speed={0.3} offset={20}>
-        <motion.p 
-          className="text-xl md:text-2xl max-w-2xl mb-12 text-gray-700"
+        <motion.p          className="text-base md:text-lg max-w-4xl mb-12 text-white/90 leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          Innovative research solutions for the modern scientific community. 
-          Exploring the frontiers of knowledge through collaboration and cutting-edge technology.
+          AI-based depression detection has emerged as an effective approach for early diagnosis 
+          and continuous mental health monitoring. Our multi-modal framework integrates voice, text, 
+          and facial expression analysis, leveraging AI-driven deep learning, NLP, and computer vision 
+          techniques. Through CNN-LSTM hybrid models, RNN-LSTM networks, and advanced facial analysis 
+          using FaceNet-PyTorch and EfficientNet, we deliver comprehensive emotional assessment. 
+          Featured by our AI-trained voice companion based on LLaMA 3.2 LLM, providing personalized 
+          mental health support and adaptive interventions.
         </motion.p>
       </ParallaxAnimation>
       
@@ -104,11 +108,8 @@ export default function HeroSection() {
       >
         <motion.a
           href="#about"
-          className="btn-primary px-8 py-4 rounded-lg font-medium text-lg shadow-lg relative overflow-hidden group flex items-center"
-          whileHover={{ 
-            scale: 1.05,
-            boxShadow: "0 10px 25px -5px rgba(74, 108, 247, 0.4)"
-          }}
+          className="bg-white/20 backdrop-blur-md text-white border-2 border-white/30 px-8 py-4 rounded-lg font-medium text-lg shadow-lg relative overflow-hidden group flex items-center hover:bg-white/30 transition-colors"
+          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
           <span className="relative z-10 flex items-center">
@@ -117,17 +118,11 @@ export default function HeroSection() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </span>
-          <motion.span 
-            className="absolute bottom-0 left-0 w-full h-full bg-primary-dark opacity-0 group-hover:opacity-100 transition-opacity"
-            initial={{ x: "-100%" }}
-            whileHover={{ x: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          />
         </motion.a>
         
         <motion.a
           href="#contact"
-          className="px-8 py-4 border-2 border-primary text-primary hover:bg-primary-light/10 rounded-lg transition-colors font-medium text-lg flex items-center"
+          className="bg-white/10 backdrop-blur-md text-white border-2 border-white/20 px-8 py-4 rounded-lg transition-colors font-medium text-lg flex items-center hover:bg-white/20"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -137,35 +132,6 @@ export default function HeroSection() {
           </svg>
         </motion.a>
       </motion.div>
-
-      <div className="w-full max-w-5xl mt-16">
-        <motion.div 
-          className="relative h-[300px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 50 }}
-          transition={{ duration: 1, delay: 1 }}
-          whileHover={{ 
-            y: -10,
-            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
-          }}
-        >
-          <Image
-            src={hero}
-            alt="Research visualization"
-            fill
-            style={{ objectFit: 'cover' }}
-            priority
-            className="rounded-2xl transition-transform duration-700 hover:scale-105"
-          />
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-70"></div>
-          
-          {/* Badge */}
-          <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
-            <p className="text-sm font-semibold text-gray-800">Est. May 2024</p>
-          </div>
-        </motion.div>
-      </div>
       
       {/* Scroll indicator */}
       <motion.div 
@@ -175,12 +141,12 @@ export default function HeroSection() {
         transition={{ delay: 1.5, duration: 1 }}
       >
         <motion.div
-          className="w-8 h-12 border-2 border-primary rounded-full flex justify-center"
+          className="w-8 h-12 border-2 border-white/50 rounded-full flex justify-center"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         >
           <motion.div 
-            className="w-1 h-3 bg-primary rounded-full mt-2"
+            className="w-1 h-3 bg-white/50 rounded-full mt-2"
             animate={{ 
               y: [0, 16, 0],
               opacity: [1, 0, 1]

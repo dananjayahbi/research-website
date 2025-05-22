@@ -39,7 +39,7 @@ export default function DocumentsSection() {
       id: "doc1",
       title: "Project Charter",
       description: "Formal document outlining the project scope, objectives, and participants",
-      fileUrl: "/documents/document1.pdf",
+      fileUrl: "https://drive.google.com/drive/folders/1POOn5VfvSxTIXLUGhizWIRMDsWmlW4dw?usp=sharing",
       fileSize: "1.8 MB",
       dateAdded: "2024-06-15",
       iconType: "pdf"
@@ -48,7 +48,7 @@ export default function DocumentsSection() {
       id: "doc2",
       title: "Project Proposal",
       description: "Comprehensive proposal including research objectives, methodology, and expected outcomes",
-      fileUrl: "/documents/document2.pdf",
+      fileUrl: "https://drive.google.com/drive/folders/15e8T_M3xsftnPEgF4JeAzmC4RG96IeFe?usp=sharing",
       fileSize: "3.2 MB",
       dateAdded: "2024-07-10",
       iconType: "pdf"
@@ -57,7 +57,7 @@ export default function DocumentsSection() {
       id: "doc3",
       title: "Research Paper",
       description: "Published academic paper detailing our research findings and methodology",
-      fileUrl: "/documents/document3.pdf",
+      fileUrl: "https://drive.google.com/drive/folders/1MP0lkjkTBql907RkkVd5CU3ONlWPEjdu?usp=sharing",
       fileSize: "2.5 MB",
       dateAdded: "2025-02-28",
       iconType: "pdf"
@@ -66,7 +66,7 @@ export default function DocumentsSection() {
       id: "doc4",
       title: "Final Thesis",
       description: "Complete thesis document with comprehensive analysis and conclusions",
-      fileUrl: "/documents/document3.pdf",
+      fileUrl: "https://drive.google.com/drive/folders/1VNt9a2XGMTnMBOBwFD-4dBhbfr5MWWG8?usp=sharing",
       fileSize: "5.7 MB",
       dateAdded: "2025-03-15",
       iconType: "doc"
@@ -75,7 +75,7 @@ export default function DocumentsSection() {
       id: "doc5",
       title: "Status Document",
       description: "Current project status report with progress updates and milestone achievements",
-      fileUrl: "/documents/document3.pdf",
+      fileUrl: "https://drive.google.com/drive/folders/1tvgdab5ye24Nyi45M7pUa27Q1QG1_c72?usp=sharing",
       fileSize: "1.5 MB",
       dateAdded: "2025-04-05",
       iconType: "doc"
