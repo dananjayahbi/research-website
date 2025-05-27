@@ -7,10 +7,13 @@ import { useInView } from '../hooks/useInView';
 import AnimatedLetters from './AnimatedLetters';
 import AnimatedHeading from './AnimatedHeading';
 
-// Import slideshow images
-import slide1 from '../../public/images/slideshow/ss1.jpg';
-import slide2 from '../../public/images/slideshow/ss2.jpg';
-import slide3 from '../../public/images/slideshow/ss3.jpg';
+// Import gallery images
+import slide1 from '../../public/images/gallery/Screenshot (82).png';
+import slide2 from '../../public/images/gallery/Screenshot (83).png';
+import slide3 from '../../public/images/gallery/Screenshot (84).png';
+import slide4 from '../../public/images/gallery/Screenshot (85).png';
+import slide5 from '../../public/images/gallery/Screenshot (86).png';
+import slide6 from '../../public/images/gallery/Screenshot (87).png';
 
 export default function SlideShowSection() {
   const { ref, isInView } = useInView<HTMLDivElement>({
@@ -21,20 +24,38 @@ export default function SlideShowSection() {
     {
       id: 1,
       image: slide1,
-      title: "System Architecture",
-      description: "Our comprehensive multi-modal depression detection system"
+      title: "System Interface",
+      description: "Intuitive dashboard for mental health monitoring"
     },
     {
       id: 2,
       image: slide2,
-      title: "AI Analysis",
-      description: "Advanced deep learning models for emotion and speech analysis"
+      title: "Data Analysis",
+      description: "Real-time emotion and behavior pattern visualization"
     },
     {
       id: 3,
       image: slide3,
-      title: "Interactive Support",
-      description: "AI-driven conversational companion for mental health support"
+      title: "User Engagement",
+      description: "Interactive sessions for mental health assessment"
+    },
+    {
+      id: 4,
+      image: slide4,
+      title: "Results Dashboard",
+      description: "Comprehensive analysis of mental well-being metrics"
+    },
+    {
+      id: 5,
+      image: slide5,
+      title: "Monitoring Tools",
+      description: "Advanced tracking of psychological indicators"
+    },
+    {
+      id: 6,
+      image: slide6,
+      title: "Progress Reports",
+      description: "Longitudinal tracking of mental health improvement"
     }
   ];
   
