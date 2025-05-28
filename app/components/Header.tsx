@@ -8,16 +8,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('hero');
-  const navLinks = [
+  const [activeLink, setActiveLink] = useState('hero');  const navLinks = [
     { name: 'Home', href: '#hero' },
     { name: 'About', href: '#about' },
+    { name: 'Domain', href: '#domain' },
     { name: 'Technologies', href: '#technologies' },
     { name: 'Documents', href: '#documents' },
     { name: 'Presentations', href: '#presentations' },
     { name: 'Milestones', href: '#milestones' },
     { name: 'Gallery', href: '#gallery' },
-    { name: 'Domain', href: '#domain' },
     { name: 'Team', href: '#team' },
     { name: 'Contact', href: '#contact' },
   ];
@@ -167,12 +166,12 @@ export default function Header() {
       initial="hidden"
       animate="visible"    >      <div className="w-full max-w-full mx-0 px-0">
         <div className="flex items-center h-14">          <motion.div 
-            className="flex items-center ml-8 md:ml-12 lg:ml-16"
+            className="flex items-center ml-2 md:ml-4 lg:ml-6"
             variants={logoVariants}
           >            <a 
               href="#hero" 
               onClick={(e) => handleNavClick(e, '#hero')}
-              className="flex items-center pl-3"
+              className="flex items-center pl-1"
             >              <motion.div
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -193,7 +192,7 @@ export default function Header() {
               >
                 MIRROR
               </motion.span>
-            </a>          </motion.div>          {/* Desktop Navigation */}          <nav className="hidden md:flex items-center justify-center flex-1">
+            </a>          </motion.div>{/* Desktop Navigation */}          <nav className="hidden md:flex items-center justify-center flex-1">
             <ul className="flex space-x-6 md:space-x-8">
               {navLinks.map((link, index) => (
                 <motion.li 

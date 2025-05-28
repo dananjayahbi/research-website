@@ -68,10 +68,9 @@ export default function HeroSection() {
           }}
         />
       </ParallaxAnimation>      
-      
-      {/* Title with animated gradient text */}
+        {/* Title with animated gradient text */}
       <motion.div
-        className="mb-8"
+        className="mb-4"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
         transition={{ duration: 0.8, delay: 0.2 }}
@@ -81,6 +80,15 @@ export default function HeroSection() {
           className="text-6xl md:text-7xl lg:text-8xl"
         />
       </motion.div>
+        {/* Added subheading */}
+      <motion.h2
+        className="text-xl md:text-2xl lg:text-3xl text-blue-400/90 mb-8 font-medium max-w-4xl mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+      >
+        Advancements in Digital Healthcare Technologies
+      </motion.h2>
 
       <ParallaxAnimation direction="up" speed={0.3} offset={20}>
         <motion.p          
