@@ -103,7 +103,7 @@ export default function Footer() {
       </div>
       
       <div className="max-w-6xl mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           <motion.div 
             custom={0} 
             variants={columnVariants}
@@ -227,56 +227,8 @@ export default function Footer() {
                 </motion.li>
               ))}
             </ul>
-          </motion.div>
-          
-          <motion.div 
+          </motion.div>          <motion.div 
             custom={2} 
-            variants={columnVariants}
-          >
-            <h3 className="text-lg font-semibold mb-6 relative inline-block">
-              Resources
-              <motion.span 
-                className="absolute -bottom-1 left-0 w-12 h-0.5 bg-primary"
-                initial={{ width: 0 }}
-                animate={{ width: 48 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-              />
-            </h3>
-            <ul className="space-y-3">
-              {[
-                { name: 'Research Papers', href: '#' },
-                { name: 'Data Repository', href: '#' },
-                { name: 'News & Updates', href: '#' },
-                { name: 'Privacy Policy', href: '#' },
-                { name: 'Terms of Use', href: '#' },
-              ].map((link, index) => (
-                <motion.li 
-                  key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                  transition={{ delay: 0.6 + (index * 0.05), duration: 0.4 }}
-                >
-                  <motion.div
-                    variants={linkVariants}
-                    whileHover="hover"
-                    className="flex items-center group"
-                  >
-                    <motion.span 
-                      className="w-1.5 h-1.5 rounded-full bg-primary mr-2 opacity-0 group-hover:opacity-100"
-                      initial={{ scale: 0 }}
-                      whileHover={{ scale: 1 }}
-                    />
-                    <Link href={link.href} className="text-gray-300 hover:text-white transition-colors">
-                      {link.name}
-                    </Link>
-                  </motion.div>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-          
-          <motion.div 
-            custom={3} 
             variants={columnVariants}
           >
             <h3 className="text-lg font-semibold mb-6 relative inline-block">
